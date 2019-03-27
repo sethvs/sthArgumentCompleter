@@ -16,14 +16,14 @@ function Get-CustomArgumentCompleter
             {
                 if ($a.Key -like $n)
                 {
-                    inCreateObject -argumentCompleter $a -expandScriptBlocks $ExpandScriptBlocks -type Custom
+                    inCreateArgumentCompleterCustomObject -argumentCompleter $a -expandScriptBlocks $ExpandScriptBlocks -type Custom
                     break
                 }
             }
         }
         else
         {
-            inCreateObject -argumentCompleter $a -expandScriptBlocks $ExpandScriptBlocks -type Custom
+            inCreateArgumentCompleterCustomObject -argumentCompleter $a -expandScriptBlocks $ExpandScriptBlocks -type Custom
         }
     }
 }
@@ -46,14 +46,14 @@ function Get-NativeArgumentCompleter
             {
                 if ($a.Key -like $n)
                 {
-                    inCreateObject -argumentCompleter $a -expandScriptBlocks $ExpandScriptBlocks -type Native
+                    inCreateArgumentCompleterCustomObject -argumentCompleter $a -expandScriptBlocks $ExpandScriptBlocks -type Native
                     break
                 }
             }
         }
         else
         {
-            inCreateObject -argumentCompleter $a -expandScriptBlocks $ExpandScriptBlocks -type Native
+            inCreateArgumentCompleterCustomObject -argumentCompleter $a -expandScriptBlocks $ExpandScriptBlocks -type Native
         }
     }
 }
@@ -67,15 +67,15 @@ function Get-CustomArgumentCompleterScriptBlock
     )
 
     $argumentCompleters = inGetArgumentCompleter -Type Custom
-    $scriptBlock = {}
+    [scriptblock]$scriptBlock = $null
 
     if ($argumentCompleters.TryGetValue($Name,[ref]$scriptBlock))
     {
-        $ScriptBlock
+        $scriptBlock
     }
     else
     {
-        Write-Error -Message "There are no argument completer `"$Name`"." -ErrorId "ArgumentError" -Category InvalidArgument
+        Write-Error -Message "There are no argument completer `"$Name`"." -ErrorId "ArgumentError" -Category InvalidArgument 
     }
 }
 
@@ -88,7 +88,7 @@ function Get-NativeArgumentCompleterScriptBlock
     )
 
     $argumentCompleters = inGetArgumentCompleter -Type Native
-    $scriptBlock = {}
+    [scriptblock]$scriptBlock = $null
 
     if ($argumentCompleters.TryGetValue($Name,[ref]$scriptBlock))
     {
@@ -180,7 +180,7 @@ function inGetArgumentCompleter
     }
 }
 
-function inCreateObject
+function inCreateArgumentCompleterCustomObject
 {
     Param (
         $argumentCompleter,
