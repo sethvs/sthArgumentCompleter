@@ -43,14 +43,17 @@ function Remove-CustomArgumentCompleter
     Param (
         [Parameter(Mandatory)]
         [ArgumentCompleter([sthCustomArgumentCompleter])]
-        [string]$Name
+        [string[]]$Name
     )
 
     $argumentCompleters = inGetArgumentCompleter -Type Custom
 
-    if (!$argumentCompleters.Remove($Name))
+    foreach ($n in $Name)
     {
-        inArgumentCompleterNotExist -Value $Name
+        if (!$argumentCompleters.Remove($n))
+        {
+            Write-Error -Message "There are no argument completer `"$n`"." -ErrorId "ArgumentError" -Category InvalidArgument
+        }
     }
 }
 
@@ -59,17 +62,39 @@ function Remove-NativeArgumentCompleter
     Param (
         [Parameter(Mandatory)]
         [ArgumentCompleter([sthNativeArgumentCompleter])]
-        [string]$Name
+        [string[]]$Name
     )
 
     $argumentCompleters = inGetArgumentCompleter -Type Native
 
-    if (!$argumentCompleters.Remove($Name))
+    foreach ($n in $Name)
     {
-        inArgumentCompleterNotExist -Value $Name
+        if (!$argumentCompleters.Remove($n))
+        {
+            Write-Error -Message "There are no argument completer `"$n`"." -ErrorId "ArgumentError" -Category InvalidArgument
+        }
     }
 }
 
+function Clear-CustomArgumentCompleters
+{
+    $argumentCompleters = inGetArgumentCompleter -Type Custom
+
+    if ($argumentCompleters)
+    {
+        $argumentCompleters.Clear()
+    }
+}
+
+function Clear-NativeArgumentCompleters
+{
+    $argumentCompleters = inGetArgumentCompleter -Type Native
+
+    if ($argumentCompleters)
+    {
+        $argumentCompleters.Clear()
+    }
+}
 
 
 function inGetArgumentCompleter
@@ -91,19 +116,4 @@ function inGetArgumentCompleter
     {
         $_context.GetType().GetProperty('NativeArgumentCompleters',$flags).GetValue($_context)
     }
-}
-
-function inArgumentCompleterNotExist
-{
-    Param(
-        [string]$Value
-    )
-
-    $Exception = [System.ArgumentException]::new("There are no argument completer `"$Value`".")
-    $ErrorId = 'ArgumentError'
-    $ErrorCategory = [System.Management.Automation.ErrorCategory]::InvalidArgument
-
-    $ErrorRecord = [System.Management.Automation.ErrorRecord]::new($Exception, $ErrorId, $ErrorCategory, $null)
-
-    throw $ErrorRecord
 }
