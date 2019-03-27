@@ -1,21 +1,30 @@
 function Get-CustomArgumentCompleter
 {
-    [CmdletBinding(DefaultParameterSetName='Name')]
-
     Param (
         [ArgumentCompleter([sthCustomArgumentCompleter])]
-        [string]$Name
+        [string[]]$Name,
+        [switch]$ExpandScriptBlocks
     )
 
     $argumentCompleters = inGetArgumentCompleter -Type Custom
 
-    if ($Name)
+    foreach ($a in $argumentCompleters.GetEnumerator())
     {
-        $argumentCompleters.$Name
-    }
-    else
-    {
-        $argumentCompleters
+        if ($Name)
+        {
+            foreach ($n in $Name)
+            {
+                if ($a.Key -like $n)
+                {
+                    inCreateObject -argumentCompleter $a -expandScriptBlocks $ExpandScriptBlocks -type Custom
+                    break
+                }
+            }
+        }
+        else
+        {
+            inCreateObject -argumentCompleter $a -expandScriptBlocks $ExpandScriptBlocks -type Custom
+        }
     }
 }
 
@@ -23,18 +32,71 @@ function Get-NativeArgumentCompleter
 {
     Param (
         [ArgumentCompleter([sthNativeArgumentCompleter])]
-        [string]$Name
+        [string[]]$Name,
+        [switch]$ExpandScriptBlocks
     )
     
     $argumentCompleters = inGetArgumentCompleter -Type Native
 
-    if ($Name)
+    foreach ($a in $argumentCompleters.GetEnumerator())
     {
-        $argumentCompleters.$Name
+        if ($Name)
+        {
+            foreach ($n in $Name)
+            {
+                if ($a.Key -like $n)
+                {
+                    inCreateObject -argumentCompleter $a -expandScriptBlocks $ExpandScriptBlocks -type Native
+                    break
+                }
+            }
+        }
+        else
+        {
+            inCreateObject -argumentCompleter $a -expandScriptBlocks $ExpandScriptBlocks -type Native
+        }
+    }
+}
+
+function Get-CustomArgumentCompleterScriptBlock
+{
+    Param (
+        [Parameter(Mandatory)]
+        [ArgumentCompleter([sthCustomArgumentCompleter])]
+        [string]$Name
+    )
+
+    $argumentCompleters = inGetArgumentCompleter -Type Custom
+    $scriptBlock = {}
+
+    if ($argumentCompleters.TryGetValue($Name,[ref]$scriptBlock))
+    {
+        $ScriptBlock
     }
     else
     {
-        $argumentCompleters
+        Write-Error -Message "There are no argument completer `"$Name`"." -ErrorId "ArgumentError" -Category InvalidArgument
+    }
+}
+
+function Get-NativeArgumentCompleterScriptBlock
+{
+    Param (
+        [Parameter(Mandatory)]
+        [ArgumentCompleter([sthCustomArgumentCompleter])]
+        [string]$Name
+    )
+
+    $argumentCompleters = inGetArgumentCompleter -Type Native
+    $scriptBlock = {}
+
+    if ($argumentCompleters.TryGetValue($Name,[ref]$scriptBlock))
+    {
+        $ScriptBlock
+    }
+    else
+    {
+        Write-Error -Message "There are no argument completer `"$Name`"." -ErrorId "ArgumentError" -Category InvalidArgument
     }
 }
 
@@ -116,4 +178,54 @@ function inGetArgumentCompleter
     {
         $_context.GetType().GetProperty('NativeArgumentCompleters',$flags).GetValue($_context)
     }
+}
+
+function inCreateObject
+{
+    Param (
+        $argumentCompleter,
+        [Parameter(Mandatory)]
+        [ValidateSet('Custom','Native')]
+        $type,
+        $ExpandScriptBlocks
+    )
+
+    if ($type -eq 'Custom')
+    {
+        if (($i = $argumentCompleter.Key.IndexOf(":")) -ge 0)
+        {
+            $commandName = $argumentCompleter.Key.Substring(0, $i)
+            $parameterName = $argumentCompleter.Key.Substring($i + 1)
+        }
+        else
+        {
+            $commandName = $null
+            $parameterName = $argumentCompleter.Key
+        }
+
+        $object = [PSCustomObject]@{
+            CommandName = $commandName
+            ParameterName = $parameterName
+            ScriptBlock = $argumentCompleter.Value
+        } | Add-Member -TypeName 'sth.CustomArgumentCompleter' -PassThru
+    
+        if ($ExpandScriptBlocks)
+        {
+            $object | Add-Member -TypeName 'sth.CustomArgumentCompleter#Expand'
+        }
+    }
+    else
+    {
+        $object = [PSCustomObject]@{
+            CommandName = $argumentCompleter.Key
+            ScriptBlock = $argumentCompleter.Value
+        } | Add-Member -TypeName 'sth.NativeArgumentCompleter' -PassThru
+    
+        if ($ExpandScriptBlocks)
+        {
+            $object | Add-Member -TypeName 'sth.NativeArgumentCompleter#Expand'
+        }
+    }
+
+    $object
 }

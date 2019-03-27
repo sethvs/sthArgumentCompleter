@@ -1,1 +1,1 @@
-Export-ModuleMember -Function Get-CustomArgumentCompleter, Get-NativeArgumentCompleter, Remove-CustomArgumentCompleter, Remove-NativeArgumentCompleter, Clear-CustomArgumentCompleters, Clear-NativeArgumentCompleters
+Export-ModuleMember -Function Get-CustomArgumentCompleter, Get-NativeArgumentCompleter, Get-CustomArgumentCompleterScriptBlock, Get-NativeArgumentCompleterScriptBlock, Remove-CustomArgumentCompleter, Remove-NativeArgumentCompleter, Clear-CustomArgumentCompleters, Clear-NativeArgumentCompleters
