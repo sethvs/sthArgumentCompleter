@@ -1,0 +1,69 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "DeployModule",
+            "type": "shell",
+            "command": ".\\_deployModule.ps1",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "dedicated",
+                "showReuseMessage": false,
+                "clear": true
+            }
+        },
+        {
+            "label": "InvokePester",
+            "type": "shell",
+            "command": "Invoke-Pester -Script .\\Tests\\sthArgumentCompleter.tests.ps1 ${input:codeCoverage}",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$pester"
+            ],
+            "presentation": {
+                "echo": false,
+                "reveal": "always",
+                "focus": true,
+                "panel": "dedicated",
+                "showReuseMessage": false,
+                "clear": true
+            },
+        },
+    ],
+    "inputs": [
+        {
+            "id": "codeCoverage",
+            "type": "pickString",
+            "description": "Code Coverage Option",
+            "default": "",
+            "options": [
+                "",
+                "-CodeCoverage '.\\sthArgumentCompleterFunctions.ps1', '.\\sthArgumentCompleterCompleters.ps1'",
+                "-CodeCoverage '.\\sthArgumentCompleterFunctions.ps1'",
+                "-CodeCoverage '.\\sthArgumentCompleterCompleters.ps1'",
+                "-CodeCoverage @{Path = '.\\sthArgumentCompleterFunctions.ps1'; Function = 'Get-CustomArgumentCompleter'}",
+                "-CodeCoverage @{Path = '.\\sthArgumentCompleterFunctions.ps1'; Function = 'Get-NativeArgumentCompleter'}",
+                "-CodeCoverage @{Path = '.\\sthArgumentCompleterFunctions.ps1'; Function = 'inGetArgumentCompleter'}",
+                "-CodeCoverage @{Path = '.\\sthArgumentCompleterFunctions.ps1'; Function = 'inCreateObject'}",
+                "-CodeCoverage @{Path = '.\\sthArgumentCompleterFunctions.ps1'; Function = 'Get-CustomArgumentCompleterScriptBlock'}",
+                "-CodeCoverage @{Path = '.\\sthArgumentCompleterFunctions.ps1'; Function = 'Get-NativeArgumentCompleterScriptBlock'}",
+                "-CodeCoverage @{Path = '.\\sthArgumentCompleterFunctions.ps1'; Function = 'Remove-CustomArgumentCompleter'}",
+                "-CodeCoverage @{Path = '.\\sthArgumentCompleterFunctions.ps1'; Function = 'Remove-NativeArgumentCompleter'}",
+                "-CodeCoverage @{Path = '.\\sthArgumentCompleterFunctions.ps1'; Function = 'Clear-CustomArgumentCompleters'}",
+                "-CodeCoverage @{Path = '.\\sthArgumentCompleterFunctions.ps1'; Function = 'Clear-NativeArgumentCompleters'}"
+            ]
+        }
+    ]
+}
