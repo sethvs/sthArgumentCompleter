@@ -8,7 +8,7 @@ function Get-CustomArgumentCompleter
 
     $argumentCompleters = inGetArgumentCompleter -Type Custom
 
-    foreach ($a in $argumentCompleters.GetEnumerator())
+    foreach ($a in $($argumentCompleters.GetEnumerator()))
     {
         if ($Name)
         {
@@ -38,7 +38,7 @@ function Get-NativeArgumentCompleter
     
     $argumentCompleters = inGetArgumentCompleter -Type Native
 
-    foreach ($a in $argumentCompleters.GetEnumerator())
+    foreach ($a in $($argumentCompleters.GetEnumerator()))
     {
         if ($Name)
         {
@@ -103,18 +103,24 @@ function Get-NativeArgumentCompleterScriptBlock
 function Remove-CustomArgumentCompleter
 {
     Param (
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
         [ArgumentCompleter([sthCustomArgumentCompleter])]
         [string[]]$Name
     )
 
-    $argumentCompleters = inGetArgumentCompleter -Type Custom
-
-    foreach ($n in $Name)
+    begin
     {
-        if (!$argumentCompleters.Remove($n))
+        $argumentCompleters = inGetArgumentCompleter -Type Custom
+    }
+
+    process
+    {
+        foreach ($n in $Name)
         {
-            Write-Error -Message "There are no argument completer `"$n`"." -ErrorId "ArgumentError" -Category InvalidArgument
+            if (!$argumentCompleters.Remove($n))
+            {
+                Write-Error -Message "There are no argument completer `"$n`"." -ErrorId "ArgumentError" -Category InvalidArgument
+            }
         }
     }
 }
@@ -122,18 +128,24 @@ function Remove-CustomArgumentCompleter
 function Remove-NativeArgumentCompleter
 {
     Param (
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
         [ArgumentCompleter([sthNativeArgumentCompleter])]
         [string[]]$Name
     )
 
-    $argumentCompleters = inGetArgumentCompleter -Type Native
-
-    foreach ($n in $Name)
+    begin
     {
-        if (!$argumentCompleters.Remove($n))
+        $argumentCompleters = inGetArgumentCompleter -Type Native
+    }
+
+    process
+    {
+        foreach ($n in $Name)
         {
-            Write-Error -Message "There are no argument completer `"$n`"." -ErrorId "ArgumentError" -Category InvalidArgument
+            if (!$argumentCompleters.Remove($n))
+            {
+                Write-Error -Message "There are no argument completer `"$n`"." -ErrorId "ArgumentError" -Category InvalidArgument
+            }
         }
     }
 }
