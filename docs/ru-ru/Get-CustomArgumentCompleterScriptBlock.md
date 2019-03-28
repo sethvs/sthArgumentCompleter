@@ -34,14 +34,14 @@ Get-CustomArgumentCompleterScriptBlock [-Name] <String> [<CommonParameters>]
 Параметр поддерживает завершение значений при нажатии клавиши Tab.
 
 ```yaml
-Type: String
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
