@@ -35,7 +35,7 @@ function Get-NativeArgumentCompleter
         [string[]]$Name,
         [switch]$ExpandScriptBlocks
     )
-    
+
     $argumentCompleters = inGetArgumentCompleter -Type Native
 
     foreach ($a in $($argumentCompleters.GetEnumerator()))
@@ -239,7 +239,7 @@ function inCreateArgumentCompleterCustomObject
             ParameterName = $parameterName
             ScriptBlock = $argumentCompleter.Value
         } | Add-Member -TypeName 'sth.CustomArgumentCompleter' -PassThru
-    
+
         if ($ExpandScriptBlocks)
         {
             $object | Add-Member -TypeName 'sth.CustomArgumentCompleter#Expand'
@@ -252,7 +252,7 @@ function inCreateArgumentCompleterCustomObject
             CommandName = $argumentCompleter.Key
             ScriptBlock = $argumentCompleter.Value
         } | Add-Member -TypeName 'sth.NativeArgumentCompleter' -PassThru
-    
+
         if ($ExpandScriptBlocks)
         {
             $object | Add-Member -TypeName 'sth.NativeArgumentCompleter#Expand'
