@@ -83,7 +83,7 @@ function Get-NativeArgumentCompleterScriptBlock
 {
     Param (
         [Parameter(Mandatory)]
-        [ArgumentCompleter([sthCustomArgumentCompleter])]
+        [ArgumentCompleter([sthNativeArgumentCompleter])]
         [string]$Name
     )
 

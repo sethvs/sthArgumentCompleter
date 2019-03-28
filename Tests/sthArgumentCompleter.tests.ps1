@@ -133,7 +133,7 @@ Describe "sthArgumentCompleter" {
     }
 }
 
-Describe "sthArgumentCompleterCompleters" {
+Describe "ArgumentCompleterCompleters" {
 
     BeforeAll {
         inClearArgumentCompleters
@@ -144,7 +144,7 @@ Describe "sthArgumentCompleterCompleters" {
         inClearArgumentCompleters
     }
 
-    Context "sthCustomArgumentCompleter" {
+    Context "Get-CustomArgumentCompleter" {
 
         It "Should complete Custom Argument Completer Name" {
 
@@ -154,13 +154,53 @@ Describe "sthArgumentCompleterCompleters" {
         }
     }
 
-    Context "sthNativeArgumentCompleter" {
+    Context "Get-CustomArgumentCompleterScriptBlock" {
+
+        It "Should complete Custom Argument Completer Name" {
+
+            $command = 'Get-CustomArgumentCompleterScriptBlock -Name p'
+            $result = TabExpansion2 -inputScript $command -cursorColumn $command.Length
+            $result.CompletionMatches.CompletionText | Should -BeExactly 'ParameterThree'
+        }
+    }
+
+    Context "Remove-CustomArgumentCompleter" {
+
+        It "Should complete Custom Argument Completer Name" {
+
+            $command = 'Remove-CustomArgumentCompleter -Name p'
+            $result = TabExpansion2 -inputScript $command -cursorColumn $command.Length
+            $result.CompletionMatches.CompletionText | Should -BeExactly 'ParameterThree'
+        }
+    }
+
+    Context "Get-NativeArgumentCompleter" {
 
         It "Should complete Native Argument Completer Name" {
 
-            $command = 'Get-NativeArgumentCompleter -Name c'
+            $command = 'Get-NativeArgumentCompleter -Name commandfi'
             $result = TabExpansion2 -inputScript $command -cursorColumn $command.Length
-            $result.CompletionMatches | Should -HaveCount 3
+            $result.CompletionMatches.CompletionText | Should -BeExactly 'CommandFive'
+        }
+    }
+
+    Context "Get-NativeArgumentCompleterScriptBlock" {
+
+        It "Should complete Native Argument Completer Name" {
+
+            $command = 'Get-NativeArgumentCompleterScriptBlock -Name commandfi'
+            $result = TabExpansion2 -inputScript $command -cursorColumn $command.Length
+            $result.CompletionMatches.CompletionText | Should -BeExactly 'CommandFive'
+        }
+    }
+
+    Context "Remove-NativeArgumentCompleter" {
+
+        It "Should complete Native Argument Completer Name" {
+
+            $command = 'Remove-NativeArgumentCompleter -Name commandfi'
+            $result = TabExpansion2 -inputScript $command -cursorColumn $command.Length
+            $result.CompletionMatches.CompletionText | Should -BeExactly 'CommandFive'
         }
     }
 }
