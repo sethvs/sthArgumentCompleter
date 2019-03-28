@@ -8,7 +8,7 @@ function Get-CustomArgumentCompleter
 
     $argumentCompleters = inGetArgumentCompleter -Type Custom
 
-    foreach ($a in $argumentCompleters.GetEnumerator())
+    foreach ($a in $($argumentCompleters.GetEnumerator()))
     {
         if ($Name)
         {
@@ -35,10 +35,10 @@ function Get-NativeArgumentCompleter
         [string[]]$Name,
         [switch]$ExpandScriptBlocks
     )
-    
+
     $argumentCompleters = inGetArgumentCompleter -Type Native
 
-    foreach ($a in $argumentCompleters.GetEnumerator())
+    foreach ($a in $($argumentCompleters.GetEnumerator()))
     {
         if ($Name)
         {
@@ -61,60 +61,84 @@ function Get-NativeArgumentCompleter
 function Get-CustomArgumentCompleterScriptBlock
 {
     Param (
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
         [ArgumentCompleter([sthCustomArgumentCompleter])]
-        [string]$Name
+        [string[]]$Name
     )
 
-    $argumentCompleters = inGetArgumentCompleter -Type Custom
-    [scriptblock]$scriptBlock = $null
-
-    if ($argumentCompleters.TryGetValue($Name,[ref]$scriptBlock))
+    begin
     {
-        $scriptBlock
+        $argumentCompleters = inGetArgumentCompleter -Type Custom
+        [scriptblock]$scriptBlock = $null
     }
-    else
+
+    process
     {
-        Write-Error -Message "There are no argument completer `"$Name`"." -ErrorId "ArgumentError" -Category InvalidArgument 
+        foreach ($n in $Name)
+        {
+            if ($argumentCompleters.TryGetValue($n,[ref]$scriptBlock))
+            {
+                $scriptBlock
+            }
+            else
+            {
+                Write-Error -Message "There are no argument completer `"$n`"." -ErrorId "ArgumentError" -Category InvalidArgument 
+            }
+        }
     }
 }
 
 function Get-NativeArgumentCompleterScriptBlock
 {
     Param (
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
         [ArgumentCompleter([sthNativeArgumentCompleter])]
-        [string]$Name
+        [string[]]$Name
     )
 
-    $argumentCompleters = inGetArgumentCompleter -Type Native
-    [scriptblock]$scriptBlock = $null
-
-    if ($argumentCompleters.TryGetValue($Name,[ref]$scriptBlock))
+    begin
     {
-        $ScriptBlock
+        $argumentCompleters = inGetArgumentCompleter -Type Native
+        [scriptblock]$scriptBlock = $null
     }
-    else
+
+    process
     {
-        Write-Error -Message "There are no argument completer `"$Name`"." -ErrorId "ArgumentError" -Category InvalidArgument
+        foreach ($n in $Name)
+        {        
+            if ($argumentCompleters.TryGetValue($n,[ref]$scriptBlock))
+            {
+                $ScriptBlock
+            }
+            else
+            {
+                Write-Error -Message "There are no argument completer `"$n`"." -ErrorId "ArgumentError" -Category InvalidArgument
+            }
+        }
     }
 }
 
 function Remove-CustomArgumentCompleter
 {
     Param (
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
         [ArgumentCompleter([sthCustomArgumentCompleter])]
         [string[]]$Name
     )
 
-    $argumentCompleters = inGetArgumentCompleter -Type Custom
-
-    foreach ($n in $Name)
+    begin
     {
-        if (!$argumentCompleters.Remove($n))
+        $argumentCompleters = inGetArgumentCompleter -Type Custom
+    }
+
+    process
+    {
+        foreach ($n in $Name)
         {
-            Write-Error -Message "There are no argument completer `"$n`"." -ErrorId "ArgumentError" -Category InvalidArgument
+            if (!$argumentCompleters.Remove($n))
+            {
+                Write-Error -Message "There are no argument completer `"$n`"." -ErrorId "ArgumentError" -Category InvalidArgument
+            }
         }
     }
 }
@@ -122,18 +146,24 @@ function Remove-CustomArgumentCompleter
 function Remove-NativeArgumentCompleter
 {
     Param (
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
         [ArgumentCompleter([sthNativeArgumentCompleter])]
         [string[]]$Name
     )
 
-    $argumentCompleters = inGetArgumentCompleter -Type Native
-
-    foreach ($n in $Name)
+    begin
     {
-        if (!$argumentCompleters.Remove($n))
+        $argumentCompleters = inGetArgumentCompleter -Type Native
+    }
+
+    process
+    {
+        foreach ($n in $Name)
         {
-            Write-Error -Message "There are no argument completer `"$n`"." -ErrorId "ArgumentError" -Category InvalidArgument
+            if (!$argumentCompleters.Remove($n))
+            {
+                Write-Error -Message "There are no argument completer `"$n`"." -ErrorId "ArgumentError" -Category InvalidArgument
+            }
         }
     }
 }
@@ -204,11 +234,12 @@ function inCreateArgumentCompleterCustomObject
         }
 
         $object = [PSCustomObject]@{
+            Name = $argumentCompleter.Key
             CommandName = $commandName
             ParameterName = $parameterName
             ScriptBlock = $argumentCompleter.Value
         } | Add-Member -TypeName 'sth.CustomArgumentCompleter' -PassThru
-    
+
         if ($ExpandScriptBlocks)
         {
             $object | Add-Member -TypeName 'sth.CustomArgumentCompleter#Expand'
@@ -217,10 +248,11 @@ function inCreateArgumentCompleterCustomObject
     else
     {
         $object = [PSCustomObject]@{
+            Name = $argumentCompleter.Key
             CommandName = $argumentCompleter.Key
             ScriptBlock = $argumentCompleter.Value
         } | Add-Member -TypeName 'sth.NativeArgumentCompleter' -PassThru
-    
+
         if ($ExpandScriptBlocks)
         {
             $object | Add-Member -TypeName 'sth.NativeArgumentCompleter#Expand'

@@ -27,7 +27,7 @@ Describe "sthArgumentCompleter" {
         inClearArgumentCompleters
         inCreateTestEnvironment
     }
-    
+
     AfterAll {
         inClearArgumentCompleters
     }
@@ -38,12 +38,12 @@ Describe "sthArgumentCompleter" {
             $CustomArgumentCompleters = Get-CustomArgumentCompleter
             $CustomArgumentCompleters | Should -HaveCount 5
         }
-        
+
         It "Should get Custom Argument Completers by Name" {
             $CustomArgumentCompleters = Get-CustomArgumentCompleter -Name CommandOne:ParameterOne, CommandTwo:ParameterTwo, ParameterThree
             $CustomArgumentCompleters | Should -HaveCount 3
         }
-        
+
         It "Should add type name when ExpandScriptBlocks used" {
             $CustomArgumentCompleters = Get-CustomArgumentCompleter -Name CommandOne:ParameterOne -ExpandScriptBlocks
             $CustomArgumentCompleters.pstypenames[0] | Should -BeExactly 'sth.CustomArgumentCompleter#Expand'
@@ -75,16 +75,26 @@ Describe "sthArgumentCompleter" {
             $ScriptBlock.ToString() | Should -BeExactly " 'Testing-11.' "
         }
 
+        It "Should accept Custom Argument Completers from the pipeline" {
+            $ScriptBlock = Get-CustomArgumentCompleter -Name CommandOne:ParameterTwo | Get-CustomArgumentCompleterScriptBlock
+            $ScriptBlock.ToString() | Should -BeExactly " 'Testing-12.' "
+        }
+
         It "Should return an error when Custom Argument Completer doesn't exist" {
             { Get-CustomArgumentCompleterScriptBlock -Name nonexistentArgumentCompleter -ErrorAction Stop } | Should -Throw -ErrorId 'ArgumentError'
         }
     }
 
     Context "Get-NativeArgumentCompleterScriptBlock" {
-
+        
         It "Should get Native Argument Completer ScriptBlock" {
             $ScriptBlock = Get-NativeArgumentCompleterScriptBlock -Name CommandThree
             $ScriptBlock.ToString() | Should -BeExactly " 'Testing-30.' "
+        }
+
+        It "Should accept Native Argument Completers from the pipeline" {
+            $ScriptBlock = Get-NativeArgumentCompleter -Name CommandFour | Get-NativeArgumentCompleterScriptBlock
+            $ScriptBlock.ToString() | Should -BeExactly " 'Testing-40.' "
         }
 
         It "Should return an error when Native Argument Completer doesn't exist" {
@@ -99,6 +109,12 @@ Describe "sthArgumentCompleter" {
             Get-CustomArgumentCompleter | Should -HaveCount 4
         }
 
+        It "Should accept Custom Argument Completers to delete from the pipeline" {
+            Get-CustomArgumentCompleter -Name CommandOne:ParameterTwo | Remove-CustomArgumentCompleter
+            Get-CustomArgumentCompleter -Name CommandOne:ParameterTwo | Should -BeNullOrEmpty
+            Get-CustomArgumentCompleter | Should -HaveCount 3
+        }
+
         It "Should return an error when Custom Argument Completer doesn't exist" {
             { Remove-CustomArgumentCompleter -Name CommandOne:ParameterOne -ErrorAction Stop } | Should -Throw -ErrorId 'ArgumentError'
         }
@@ -109,6 +125,12 @@ Describe "sthArgumentCompleter" {
         It "Should remove Native Argument Completer by name" {
             Remove-NativeArgumentCompleter -Name CommandThree
             Get-NativeArgumentCompleter | Should -HaveCount 2
+        }
+
+        It "Should accept Native Argument Completers to delete from the pipeline" {
+            Get-NativeArgumentCompleter -Name CommandFour | Remove-NativeArgumentCompleter
+            Get-NativeArgumentCompleter -Name CommandFour | Should -BeNullOrEmpty
+            Get-NativeArgumentCompleter | Should -HaveCount 1
         }
 
         It "Should return an error when Native Argument Completer doesn't exist" {
@@ -139,7 +161,7 @@ Describe "ArgumentCompleterCompleters" {
         inClearArgumentCompleters
         inCreateTestEnvironment
     }
-    
+
     AfterAll {
         inClearArgumentCompleters
     }
