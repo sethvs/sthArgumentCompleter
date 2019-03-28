@@ -75,16 +75,26 @@ Describe "sthArgumentCompleter" {
             $ScriptBlock.ToString() | Should -BeExactly " 'Testing-11.' "
         }
 
+        It "Should accept Custom Argument Completer through the pipeline" {
+            $ScriptBlock = Get-CustomArgumentCompleter -Name CommandOne:ParameterTwo | Get-CustomArgumentCompleterScriptBlock
+            $ScriptBlock.ToString() | Should -BeExactly " 'Testing-12.' "
+        }
+
         It "Should return an error when Custom Argument Completer doesn't exist" {
             { Get-CustomArgumentCompleterScriptBlock -Name nonexistentArgumentCompleter -ErrorAction Stop } | Should -Throw -ErrorId 'ArgumentError'
         }
     }
-
+    
     Context "Get-NativeArgumentCompleterScriptBlock" {
-
+        
         It "Should get Native Argument Completer ScriptBlock" {
             $ScriptBlock = Get-NativeArgumentCompleterScriptBlock -Name CommandThree
             $ScriptBlock.ToString() | Should -BeExactly " 'Testing-30.' "
+        }
+
+        It "Should accept Native Argument Completer through the pipeline" {
+            $ScriptBlock = Get-NativeArgumentCompleter -Name CommandFour | Get-NativeArgumentCompleterScriptBlock
+            $ScriptBlock.ToString() | Should -BeExactly " 'Testing-40.' "
         }
 
         It "Should return an error when Native Argument Completer doesn't exist" {
@@ -99,7 +109,7 @@ Describe "sthArgumentCompleter" {
             Get-CustomArgumentCompleter | Should -HaveCount 4
         }
 
-        It "Should accept Custom Argument Completers to delete by pipeline" {
+        It "Should accept Custom Argument Completers to delete through the pipeline" {
             Get-CustomArgumentCompleter -Name CommandOne:ParameterTwo | Remove-CustomArgumentCompleter
             Get-CustomArgumentCompleter -Name CommandOne:ParameterTwo | Should -BeNullOrEmpty
             Get-CustomArgumentCompleter | Should -HaveCount 3
@@ -117,7 +127,7 @@ Describe "sthArgumentCompleter" {
             Get-NativeArgumentCompleter | Should -HaveCount 2
         }
 
-        It "Should accept Native Argument Completers to delete by pipeline" {
+        It "Should accept Native Argument Completers to delete through the pipeline" {
             Get-NativeArgumentCompleter -Name CommandFour | Remove-NativeArgumentCompleter
             Get-NativeArgumentCompleter -Name CommandFour | Should -BeNullOrEmpty
             Get-NativeArgumentCompleter | Should -HaveCount 1
