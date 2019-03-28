@@ -38,7 +38,7 @@ jobs:
       inputs:
         targetType: 'inline'
         script: |
-          Invoke-Pester .\Tests\sthArgumentCompleter.tests.ps1 -OutputFile .\testResults.xml -OutputFormat NUnitXml -CodeCoverage .\sthArgumentCompleterFunctions.ps1, .\sthArgumentCompleterCompleters.ps1 -CodeCoverageOutputFile .\codeCoverage.xml -CodeCoverageOutputFileFormat JaCoCo
+          Invoke-Pester .\Tests\sthArgumentCompleter.tests.ps1 -OutputFile .\testResultsCore.xml -OutputFormat NUnitXml -CodeCoverage .\sthArgumentCompleterFunctions.ps1, .\sthArgumentCompleterCompleters.ps1 -CodeCoverageOutputFile .\codeCoverageCore.xml -CodeCoverageOutputFileFormat JaCoCo
         pwsh: true
       condition: succeededOrFailed()
 
