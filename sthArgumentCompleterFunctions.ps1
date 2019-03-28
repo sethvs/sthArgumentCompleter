@@ -204,6 +204,7 @@ function inCreateArgumentCompleterCustomObject
         }
 
         $object = [PSCustomObject]@{
+            Name = $argumentCompleter.Key
             CommandName = $commandName
             ParameterName = $parameterName
             ScriptBlock = $argumentCompleter.Value
@@ -217,6 +218,7 @@ function inCreateArgumentCompleterCustomObject
     else
     {
         $object = [PSCustomObject]@{
+            Name = $argumentCompleter.Key
             CommandName = $argumentCompleter.Key
             ScriptBlock = $argumentCompleter.Value
         } | Add-Member -TypeName 'sth.NativeArgumentCompleter' -PassThru
