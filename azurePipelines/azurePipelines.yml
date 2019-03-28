@@ -1,0 +1,81 @@
+name: $(Date:yyyyMMdd)$(Rev:.rr)
+
+jobs:
+- job: windows
+  pool:
+    vmImage: windows-2019
+  steps:
+    - checkout: self
+      clean: true
+
+    # Windows PowerShell: Test
+    - powershell: |
+        Install-Module -Name Pester -MinimumVersion 4.7.3 -Repository PSGallery -Force
+      name: installPester
+      displayName: Windows PowerShell - Install Pester
+      condition: succeededOrFailed()
+
+    - powershell: |
+        Invoke-Pester .\Tests\sthArgumentCompleter.tests.ps1 -OutputFile .\testResults.xml -OutputFormat NUnitXml -CodeCoverage .\sthArgumentCompleterFunctions.ps1, .\sthArgumentCompleterCompleters.ps1 -CodeCoverageOutputFile .\codeCoverage.xml -CodeCoverageOutputFileFormat JaCoCo
+      name: invokePester
+      displayName: Windows PowerShell - Test with Pester
+      condition: succeededOrFailed()
+
+    # PowerShell Core: Test
+    - task: PowerShell@2
+      name: installPesterCore
+      displayName: PowerShell Core - Install Pester
+      inputs:
+        targetType: 'inline'
+        script: |
+          Install-Module -Name Pester -MinimumVersion 4.7.3 -Repository PSGallery -Force
+        pwsh: true
+      condition: succeededOrFailed()
+
+    - task: PowerShell@2
+      name: invokePesterCore
+      displayName: PowerShell Core - Test with Pester
+      inputs:
+        targetType: 'inline'
+        script: |
+          Invoke-Pester .\Tests\sthArgumentCompleter.tests.ps1 -OutputFile .\testResults.xml -OutputFormat NUnitXml -CodeCoverage .\sthArgumentCompleterFunctions.ps1, .\sthArgumentCompleterCompleters.ps1 -CodeCoverageOutputFile .\codeCoverage.xml -CodeCoverageOutputFileFormat JaCoCo
+        pwsh: true
+      condition: succeededOrFailed()
+
+    # Windows PowerShell: Publish Test Results
+    - task: PublishTestResults@2
+      inputs:
+        testRunner: 'NUnit'
+        testResultsFiles: 'testResults.xml' 
+        searchFolder: '$(System.DefaultWorkingDirectory)'
+        testRunTitle: Pester - Windows PowerShell
+      name: publishTestResults
+      displayName: Windows PowerShell - Publish Test Results
+      condition: succeededOrFailed()
+
+    - task: PublishCodeCoverageResults@1
+      inputs:
+        codeCoverageTool: 'JaCoCo'
+        summaryFileLocation: $(System.DefaultWorkingDirectory)/codeCoverage.xml
+      name: publishCoreCoverage
+      displayName: Windows PowerShell - Publish Code Coverage
+      condition: succeededOrFailed()
+
+    # PowerShell Core: Publish Test Results
+    - task: PublishTestResults@2
+      inputs:
+        testRunner: 'NUnit'
+        testResultsFiles: 'testResultsCore.xml' 
+        searchFolder: '$(System.DefaultWorkingDirectory)'
+        testRunTitle: Pester - PowerShell Core
+      name: publishTestResultsCore
+      displayName: PowerShell Core - Publish Test Results
+      condition: succeededOrFailed()
+
+    - task: PublishCodeCoverageResults@1
+      inputs:
+        codeCoverageTool: 'JaCoCo'
+        summaryFileLocation: $(System.DefaultWorkingDirectory)/codeCoverageCore.xml
+      name: publishCoreCoverageCore
+      displayName: PowerShell Core - Publish Code Coverage
+      condition: succeededOrFailed()
