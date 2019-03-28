@@ -15,10 +15,21 @@ function inCreateTestEnvironment
     Register-ArgumentCompleter -CommandName CommandFive -ScriptBlock { 'Testing-50.' }
 }
 
+function inClearArgumentCompleters
+{
+    Clear-CustomArgumentCompleters
+    Clear-NativeArgumentCompleters
+}
+
 Describe "sthArgumentCompleter" {
 
     BeforeAll {
+        inClearArgumentCompleters
         inCreateTestEnvironment
+    }
+    
+    AfterAll {
+        inClearArgumentCompleters
     }
 
     Context "Get-CustomArgumentCompleter" {
@@ -125,7 +136,12 @@ Describe "sthArgumentCompleter" {
 Describe "sthArgumentCompleterCompleters" {
 
     BeforeAll {
+        inClearArgumentCompleters
         inCreateTestEnvironment
+    }
+    
+    AfterAll {
+        inClearArgumentCompleters
     }
 
     Context "sthCustomArgumentCompleter" {
