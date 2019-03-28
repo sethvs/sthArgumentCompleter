@@ -99,6 +99,12 @@ Describe "sthArgumentCompleter" {
             Get-CustomArgumentCompleter | Should -HaveCount 4
         }
 
+        It "Should accept Custom Argument Completers to delete by pipeline" {
+            Get-CustomArgumentCompleter -Name CommandOne:ParameterTwo | Remove-CustomArgumentCompleter
+            Get-CustomArgumentCompleter -Name CommandOne:ParameterTwo | Should -BeNullOrEmpty
+            Get-CustomArgumentCompleter | Should -HaveCount 3
+        }
+
         It "Should return an error when Custom Argument Completer doesn't exist" {
             { Remove-CustomArgumentCompleter -Name CommandOne:ParameterOne -ErrorAction Stop } | Should -Throw -ErrorId 'ArgumentError'
         }
@@ -109,6 +115,12 @@ Describe "sthArgumentCompleter" {
         It "Should remove Native Argument Completer by name" {
             Remove-NativeArgumentCompleter -Name CommandThree
             Get-NativeArgumentCompleter | Should -HaveCount 2
+        }
+
+        It "Should accept Native Argument Completers to delete by pipeline" {
+            Get-NativeArgumentCompleter -Name CommandFour | Remove-NativeArgumentCompleter
+            Get-NativeArgumentCompleter -Name CommandFour | Should -BeNullOrEmpty
+            Get-NativeArgumentCompleter | Should -HaveCount 1
         }
 
         It "Should return an error when Native Argument Completer doesn't exist" {
