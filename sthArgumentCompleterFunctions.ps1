@@ -239,11 +239,6 @@ function inCreateArgumentCompleterCustomObject
             ParameterName = $parameterName
             ScriptBlock = $argumentCompleter.Value
         } | Add-Member -TypeName 'sth.CustomArgumentCompleter' -PassThru
-
-        if ($ExpandScriptBlocks)
-        {
-            $object | Add-Member -TypeName 'sth.CustomArgumentCompleter#Expand'
-        }
     }
     else
     {
@@ -252,11 +247,11 @@ function inCreateArgumentCompleterCustomObject
             CommandName = $argumentCompleter.Key
             ScriptBlock = $argumentCompleter.Value
         } | Add-Member -TypeName 'sth.NativeArgumentCompleter' -PassThru
+    }
 
-        if ($ExpandScriptBlocks)
-        {
-            $object | Add-Member -TypeName 'sth.NativeArgumentCompleter#Expand'
-        }
+    if ($ExpandScriptBlocks)
+    {
+        $object | Add-Member -TypeName ($object.pstypenames[0] + '#Expand')
     }
 
     $object
