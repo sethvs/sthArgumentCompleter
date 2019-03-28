@@ -52,7 +52,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## EXAMPLES
 
-### Example 1: Получение блока сценария указанного механизма завершения аргументов типа Custom
+### Пример 1: Получение блока сценария указанного механизма завершения аргументов типа Custom
 
 ```powershell
 Get-CustomArgumentCompleterScriptBlock -Name Get-Something:Name
@@ -71,6 +71,26 @@ foreach ($name in $names)
 ```
 
 Команда получает блок сценария указанного механизма завершения аргументов типа Custom.
+
+### Пример 2: Получение блока сценария механизма завершения аргументов типа Custom, переданного через конвейер
+
+```powershell
+Get-CustomArgumentCompleter -Name Do-Something:Action | Get-CustomArgumentCompleterScriptBlock
+```
+
+```
+$actions = 'ActionOne', 'ActionTwo'
+
+foreach ($action in $actions)
+{
+    if ($action -like "$wordToComplete*")
+    {
+        [System.Management.Automation.CompletionResult]::new($action)
+    }
+}
+```
+
+Команда получает блок сценария переданного по конвейеру механизма завершения аргументов типа Custom.
 
 ## INPUTS
 

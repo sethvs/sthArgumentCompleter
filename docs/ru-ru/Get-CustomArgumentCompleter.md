@@ -65,7 +65,7 @@ Accept wildcard characters: False
 
 ## EXAMPLES
 
-### Example 1: Получение всех механизмов завершения аргументов типа Custom
+### Пример 1: Получение всех механизмов завершения аргументов типа Custom
 
 ```powershell
 Get-CustomArgumentCompleter
@@ -81,7 +81,7 @@ Do-Something  Action        …
 
 Команда получает все механизмы завершения аргументов типа Custom, зарегистрированные в текущей сессии.
 
-### Example 2: Получение указанных механизмов завершения аргументов типа Custom
+### Пример 2: Получение указанных механизмов завершения аргументов типа Custom
 
 ```powershell
 Get-CustomArgumentCompleter -Name Get-Something:Name
@@ -95,7 +95,7 @@ Get-Something Name          …
 
 Команда получает указанный механизм завершения аргументов типа Custom.
 
-### Example 3: Получение механизмов завершения аргументов типа Custom и отображение их блоков сценария в развернутом виде
+### Пример 3: Получение механизмов завершения аргументов типа Custom и отображение их блоков сценария в развернутом виде
 
 ```powershell
 Get-CustomArgumentCompleter -Name Get-Something:Name -ExpandScriptBlocks

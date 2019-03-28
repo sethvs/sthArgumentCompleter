@@ -58,6 +58,14 @@ Remove-NativeArgumentCompleter -Name somecommand
 
 The command removes specified native argument completer.
 
+### Example 2: Remove native argument completer using the pipeline
+
+```powershell
+Get-NativeArgumentCompleter -Name anothercommand | Remove-NativeArgumentCompleter
+```
+
+The command removes native argument completer sent through the pipeline.
+
 ## INPUTS
 
 ### None

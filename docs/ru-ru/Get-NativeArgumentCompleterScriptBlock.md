@@ -50,7 +50,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## EXAMPLES
 
-### Example 1: Получение блока сценария указанного механизма завершения аргументов типа Native
+### Пример 1: Получение блока сценария указанного механизма завершения аргументов типа Native
 
 ```powershell
 Get-NativeArgumentCompleterScriptBlock -Name somecommand
@@ -69,6 +69,26 @@ foreach ($argument in $arguments)
 ```
 
 Команда получает блок сценария указанного механизма завершения аргументов типа Native.
+
+### Пример 2: Получение блока сценария механизма завершения аргументов типа Native, переданного через конвейер
+
+```powershell
+Get-NativeArgumentCompleter -Name anothercommand | Get-NativeArgumentCompleterScriptBlock
+```
+
+```
+$arguments = 'ArgumentOne', 'ArgumentTwo'
+
+foreach ($argument in $arguments)
+{
+    if ($argument -like "$wordToComplete*")
+    {
+        [System.Management.Automation.CompletionResult]::new($argument)
+    }
+}
+```
+
+Команда получает блок сценария переданного по конвейеру механизма завершения аргументов типа Native.
 
 ## INPUTS
 

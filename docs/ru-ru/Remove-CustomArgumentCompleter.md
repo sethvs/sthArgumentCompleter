@@ -52,13 +52,21 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## EXAMPLES
 
-### Example 1: Удаление указанного механизма завершения аргументов типа Custom
+### Пример 1: Удаление указанного механизма завершения аргументов типа Custom
 
 ```powershell
 Remove-CustomArgumentCompleter -Name Get-Something:Name
 ```
 
 Команда удаляет указанный механизм завершения аргументов типа Custom.
+
+### Пример 2: Удаление механизма завершения аргументов типа Custom, переданного через конвейер
+
+```powershell
+Get-CustomArgumentCompleter -Name Do-Something:Action | Remove-CustomArgumentCompleter
+```
+
+Команда удаляет переданный по конвейеру механизм завершения аргументов типа Custom.
 
 ## INPUTS
 

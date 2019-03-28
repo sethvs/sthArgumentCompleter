@@ -72,6 +72,26 @@ foreach ($name in $names)
 
 The command gets scriptblock of the specified custom argument completer.
 
+### Example 2: Get scriptblock of custom argument completer using the pipeline
+
+```powershell
+Get-CustomArgumentCompleter -Name Do-Something:Action | Get-CustomArgumentCompleterScriptBlock
+```
+
+```
+$actions = 'ActionOne', 'ActionTwo'
+
+foreach ($action in $actions)
+{
+    if ($action -like "$wordToComplete*")
+    {
+        [System.Management.Automation.CompletionResult]::new($action)
+    }
+}
+```
+
+The command gets scriptblock of the custom argument completer sent through the pipeline.
+
 ## INPUTS
 
 ### None

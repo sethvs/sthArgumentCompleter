@@ -70,6 +70,26 @@ foreach ($argument in $arguments)
 
 The command gets scriptblock of the specified native argument completer.
 
+### Example 2: Get scriptblock of native argument completer using the pipeline
+
+```powershell
+Get-NativeArgumentCompleter -Name anothercommand | Get-NativeArgumentCompleterScriptBlock
+```
+
+```
+$arguments = 'ArgumentOne', 'ArgumentTwo'
+
+foreach ($argument in $arguments)
+{
+    if ($argument -like "$wordToComplete*")
+    {
+        [System.Management.Automation.CompletionResult]::new($argument)
+    }
+}
+```
+
+The command gets scriptblock of the native argument completer sent through the pipeline.
+
 ## INPUTS
 
 ### None

@@ -63,7 +63,7 @@ Accept wildcard characters: False
 
 ## EXAMPLES
 
-### Example 1: Получение всех механизмов завершения аргументов типа Native
+### Пример 1: Получение всех механизмов завершения аргументов типа Native
 
 ```powershell
 Get-NativeArgumentCompleter
@@ -78,7 +78,7 @@ anothercommand …
 
 Команда получает все механизмы завершения аргументов типа Native, зарегистрированные в текущей сессии.
 
-### Example 2: Получение указанных механизмов завершения аргументов типа Native
+### Пример 2: Получение указанных механизмов завершения аргументов типа Native
 
 ```powershell
 Get-NativeArgumentCompleter -Name somecommand
@@ -92,7 +92,7 @@ somecommand …
 
 Команда получает указанный механизм завершения аргументов типа Native.
 
-### Example 3: Получение механизмов завершения аргументов типа Native и отображение их блоков сценария в развернутом виде
+### Пример 3: Получение механизмов завершения аргументов типа Native и отображение их блоков сценария в развернутом виде
 
 ```powershell
 Get-NativeArgumentCompleter -Name somecommand -ExpandScriptBlocks

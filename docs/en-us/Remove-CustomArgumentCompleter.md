@@ -60,6 +60,14 @@ Remove-CustomArgumentCompleter -Name Get-Something:Name
 
 The command removes specified custom argument completer.
 
+### Example 2: Remove custom argument completer using the pipeline
+
+```powershell
+Get-CustomArgumentCompleter -Name Do-Something:Action | Remove-CustomArgumentCompleter
+```
+
+The command removes custom argument completer sent through the pipeline.
+
 ## INPUTS
 
 ### None

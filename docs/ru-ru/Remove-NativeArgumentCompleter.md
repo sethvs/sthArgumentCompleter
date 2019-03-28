@@ -50,15 +50,21 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## EXAMPLES
 
-### Example 1: Remove specified native argument completer
-
-### Example 1: Удаление указанного механизма завершения аргументов типа Native
+### Пример 1: Удаление указанного механизма завершения аргументов типа Native
 
 ```powershell
 Remove-NativeArgumentCompleter -Name somecommand
 ```
 
 Команда удаляет указанный механизм завершения аргументов типа Native.
+
+### Пример 2: Удаление механизма завершения аргументов типа Native, переданного через конвейер
+
+```powershell
+Get-NativeArgumentCompleter -Name anothercommand | Remove-NativeArgumentCompleter
+```
+
+Команда удаляет переданный по конвейеру механизм завершения аргументов типа Native.
 
 ## INPUTS
 

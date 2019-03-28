@@ -25,7 +25,7 @@ Clear-NativeArgumentCompleters
 
 ## EXAMPLES
 
-### Example 1: Удаление всех зарегистрированных механизмов завершения аргументов типа Native
+### Пример 1: Удаление всех зарегистрированных механизмов завершения аргументов типа Native
 
 ```powershell
 Clear-NativeArgumentCompleters

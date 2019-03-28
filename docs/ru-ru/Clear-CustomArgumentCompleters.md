@@ -25,7 +25,7 @@ Clear-CustomArgumentCompleters
 
 ## EXAMPLES
 
-### Example 1: Удаление всех зарегистрированных механизмов завершения аргументов типа Custom
+### Пример 1: Удаление всех зарегистрированных механизмов завершения аргументов типа Custom
 
 ```powershell
 Clear-CustomArgumentCompleters
