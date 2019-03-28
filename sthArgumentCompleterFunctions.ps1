@@ -61,42 +61,60 @@ function Get-NativeArgumentCompleter
 function Get-CustomArgumentCompleterScriptBlock
 {
     Param (
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
         [ArgumentCompleter([sthCustomArgumentCompleter])]
-        [string]$Name
+        [string[]]$Name
     )
 
-    $argumentCompleters = inGetArgumentCompleter -Type Custom
-    [scriptblock]$scriptBlock = $null
-
-    if ($argumentCompleters.TryGetValue($Name,[ref]$scriptBlock))
+    begin
     {
-        $scriptBlock
+        $argumentCompleters = inGetArgumentCompleter -Type Custom
+        [scriptblock]$scriptBlock = $null
     }
-    else
+
+    process
     {
-        Write-Error -Message "There are no argument completer `"$Name`"." -ErrorId "ArgumentError" -Category InvalidArgument 
+        foreach ($n in $Name)
+        {
+            if ($argumentCompleters.TryGetValue($n,[ref]$scriptBlock))
+            {
+                $scriptBlock
+            }
+            else
+            {
+                Write-Error -Message "There are no argument completer `"$n`"." -ErrorId "ArgumentError" -Category InvalidArgument 
+            }
+        }
     }
 }
 
 function Get-NativeArgumentCompleterScriptBlock
 {
     Param (
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
         [ArgumentCompleter([sthNativeArgumentCompleter])]
-        [string]$Name
+        [string[]]$Name
     )
 
-    $argumentCompleters = inGetArgumentCompleter -Type Native
-    [scriptblock]$scriptBlock = $null
-
-    if ($argumentCompleters.TryGetValue($Name,[ref]$scriptBlock))
+    begin
     {
-        $ScriptBlock
+        $argumentCompleters = inGetArgumentCompleter -Type Native
+        [scriptblock]$scriptBlock = $null
     }
-    else
+
+    process
     {
-        Write-Error -Message "There are no argument completer `"$Name`"." -ErrorId "ArgumentError" -Category InvalidArgument
+        foreach ($n in $Name)
+        {        
+            if ($argumentCompleters.TryGetValue($n,[ref]$scriptBlock))
+            {
+                $ScriptBlock
+            }
+            else
+            {
+                Write-Error -Message "There are no argument completer `"$n`"." -ErrorId "ArgumentError" -Category InvalidArgument
+            }
+        }
     }
 }
 
