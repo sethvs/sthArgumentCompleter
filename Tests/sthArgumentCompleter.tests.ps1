@@ -155,6 +155,21 @@ Describe "sthArgumentCompleter" {
     }
 }
 
+Describe "No registered completers" {
+
+    BeforeAll {
+        inClearArgumentCompleters
+    }
+
+    It "Should return nothing is there are no custom argument completers" {
+        Get-CustomArgumentCompleter | Should -BeNullOrEmpty
+    }
+
+    It "Should return nothing is there are no native argument completers" {
+        Get-NativeArgumentCompleter | Should -BeNullOrEmpty
+    }
+}
+
 Describe "ArgumentCompleterCompleters" {
 
     BeforeAll {
