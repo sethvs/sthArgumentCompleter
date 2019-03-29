@@ -7,24 +7,25 @@ function Get-CustomArgumentCompleter
         [switch]$ExpandScriptBlocks
     )
 
-    $argumentCompleters = inGetArgumentCompleter -Type Custom
-
-    foreach ($a in $($argumentCompleters.GetEnumerator()))
+    if ($argumentCompleters = inGetArgumentCompleter -Type Custom)
     {
-        if ($Name)
+        foreach ($a in $($argumentCompleters.GetEnumerator()))
         {
-            foreach ($n in $Name)
+            if ($Name)
             {
-                if ($a.Key -like $n)
+                foreach ($n in $Name)
                 {
-                    inCreateArgumentCompleterCustomObject -argumentCompleter $a -expandScriptBlocks $ExpandScriptBlocks -type Custom
-                    break
+                    if ($a.Key -like $n)
+                    {
+                        inCreateArgumentCompleterCustomObject -argumentCompleter $a -expandScriptBlocks $ExpandScriptBlocks -type Custom
+                        break
+                    }
                 }
             }
-        }
-        else
-        {
-            inCreateArgumentCompleterCustomObject -argumentCompleter $a -expandScriptBlocks $ExpandScriptBlocks -type Custom
+            else
+            {
+                inCreateArgumentCompleterCustomObject -argumentCompleter $a -expandScriptBlocks $ExpandScriptBlocks -type Custom
+            }
         }
     }
 }
@@ -38,24 +39,25 @@ function Get-NativeArgumentCompleter
         [switch]$ExpandScriptBlocks
     )
 
-    $argumentCompleters = inGetArgumentCompleter -Type Native
-
-    foreach ($a in $($argumentCompleters.GetEnumerator()))
+    if ($argumentCompleters = inGetArgumentCompleter -Type Native)
     {
-        if ($Name)
+        foreach ($a in $($argumentCompleters.GetEnumerator()))
         {
-            foreach ($n in $Name)
+            if ($Name)
             {
-                if ($a.Key -like $n)
+                foreach ($n in $Name)
                 {
-                    inCreateArgumentCompleterCustomObject -argumentCompleter $a -expandScriptBlocks $ExpandScriptBlocks -type Native
-                    break
+                    if ($a.Key -like $n)
+                    {
+                        inCreateArgumentCompleterCustomObject -argumentCompleter $a -expandScriptBlocks $ExpandScriptBlocks -type Native
+                        break
+                    }
                 }
             }
-        }
-        else
-        {
-            inCreateArgumentCompleterCustomObject -argumentCompleter $a -expandScriptBlocks $ExpandScriptBlocks -type Native
+            else
+            {
+                inCreateArgumentCompleterCustomObject -argumentCompleter $a -expandScriptBlocks $ExpandScriptBlocks -type Native
+            }
         }
     }
 }
