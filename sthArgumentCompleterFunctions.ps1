@@ -1,7 +1,7 @@
 function Get-CustomArgumentCompleter
 {
     Param (
-        [ArgumentCompleter([sthCustomArgumentCompleter])]
+        [ArgumentCompleter([sthArgumentCompleter])]
         [string[]]$Name,
         [switch]$ExpandScriptBlocks
     )
@@ -31,7 +31,7 @@ function Get-CustomArgumentCompleter
 function Get-NativeArgumentCompleter
 {
     Param (
-        [ArgumentCompleter([sthNativeArgumentCompleter])]
+        [ArgumentCompleter([sthArgumentCompleter])]
         [string[]]$Name,
         [switch]$ExpandScriptBlocks
     )
@@ -62,7 +62,7 @@ function Get-CustomArgumentCompleterScriptBlock
 {
     Param (
         [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
-        [ArgumentCompleter([sthCustomArgumentCompleter])]
+        [ArgumentCompleter([sthArgumentCompleter])]
         [string[]]$Name
     )
 
@@ -92,7 +92,7 @@ function Get-NativeArgumentCompleterScriptBlock
 {
     Param (
         [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
-        [ArgumentCompleter([sthNativeArgumentCompleter])]
+        [ArgumentCompleter([sthArgumentCompleter])]
         [string[]]$Name
     )
 
@@ -122,7 +122,7 @@ function Remove-CustomArgumentCompleter
 {
     Param (
         [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
-        [ArgumentCompleter([sthCustomArgumentCompleter])]
+        [ArgumentCompleter([sthArgumentCompleter])]
         [string[]]$Name
     )
 
@@ -147,7 +147,7 @@ function Remove-NativeArgumentCompleter
 {
     Param (
         [Parameter(Mandatory, ValueFromPipelineByPropertyName)]
-        [ArgumentCompleter([sthNativeArgumentCompleter])]
+        [ArgumentCompleter([sthArgumentCompleter])]
         [string[]]$Name
     )
 

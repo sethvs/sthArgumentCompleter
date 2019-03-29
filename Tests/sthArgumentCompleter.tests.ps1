@@ -174,6 +174,27 @@ Describe "ArgumentCompleterCompleters" {
             $result = TabExpansion2 -inputScript $command -cursorColumn $command.Length
             $result.CompletionMatches.CompletionText | Should -BeExactly 'ParameterThree'
         }
+
+        It "Should complete second Custom Argument Completer Name" {
+
+            $command = 'Get-CustomArgumentCompleter -Name CommandOne:ParameterOne, CommandOne'
+            $result = TabExpansion2 -inputScript $command -cursorColumn $command.Length
+            $result.CompletionMatches.CompletionText | Should -BeExactly 'CommandOne:ParameterTwo'
+        }
+
+        It "Should propose Custom Argument Completer Names" {
+
+            $command = 'Get-CustomArgumentCompleter -Name '
+            $result = TabExpansion2 -inputScript $command -cursorColumn $command.Length
+            $result.CompletionMatches | Should -HaveCount 5
+        }
+
+        It "Should propose remaining Custom Argument Completer Names" {
+
+            $command = 'Get-CustomArgumentCompleter -Name CommandOne:ParameterOne, '
+            $result = TabExpansion2 -inputScript $command -cursorColumn $command.Length
+            $result.CompletionMatches | Should -HaveCount 4
+        }
     }
 
     Context "Get-CustomArgumentCompleterScriptBlock" {
