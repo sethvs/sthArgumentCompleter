@@ -1,3 +1,4 @@
+# .externalhelp sthArgumentCompleter.help.xml
 function Get-CustomArgumentCompleter
 {
     Param (
@@ -28,6 +29,7 @@ function Get-CustomArgumentCompleter
     }
 }
 
+# .externalhelp sthArgumentCompleter.help.xml
 function Get-NativeArgumentCompleter
 {
     Param (
@@ -58,6 +60,7 @@ function Get-NativeArgumentCompleter
     }
 }
 
+# .externalhelp sthArgumentCompleter.help.xml
 function Get-CustomArgumentCompleterScriptBlock
 {
     Param (
@@ -88,6 +91,7 @@ function Get-CustomArgumentCompleterScriptBlock
     }
 }
 
+# .externalhelp sthArgumentCompleter.help.xml
 function Get-NativeArgumentCompleterScriptBlock
 {
     Param (
@@ -118,6 +122,7 @@ function Get-NativeArgumentCompleterScriptBlock
     }
 }
 
+# .externalhelp sthArgumentCompleter.help.xml
 function Remove-CustomArgumentCompleter
 {
     Param (
@@ -143,6 +148,7 @@ function Remove-CustomArgumentCompleter
     }
 }
 
+# .externalhelp sthArgumentCompleter.help.xml
 function Remove-NativeArgumentCompleter
 {
     Param (
@@ -168,6 +174,7 @@ function Remove-NativeArgumentCompleter
     }
 }
 
+# .externalhelp sthArgumentCompleter.help.xml
 function Clear-CustomArgumentCompleters
 {
     $argumentCompleters = inGetArgumentCompleter -Type Custom
@@ -178,6 +185,7 @@ function Clear-CustomArgumentCompleters
     }
 }
 
+# .externalhelp sthArgumentCompleter.help.xml
 function Clear-NativeArgumentCompleters
 {
     $argumentCompleters = inGetArgumentCompleter -Type Native
