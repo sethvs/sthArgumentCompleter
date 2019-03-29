@@ -1,0 +1,848 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml" xmlns="http://msh">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Clear-CustomArgumentCompleters</command:name>
+      <command:verb>Clear</command:verb>
+      <command:noun>CustomArgumentCompleters</command:noun>
+      <maml:description>
+        <maml:para>Команда удаляет все зарегистрированные механизмы завершения аргументов типа Custom.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Команда удаляет все механизмы завершения аргументов типа Custom, зарегистрированные в текущей сессии 
+при помощи команды Register-ArgumentCompleter.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Clear-CustomArgumentCompleters</maml:name>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters />
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Пример 1: Удаление всех зарегистрированных механизмов завершения аргументов типа Custom</maml:title>
+        <dev:code>Clear-CustomArgumentCompleters</dev:code>
+        <dev:remarks>
+          <maml:para>Команда удаляет все зарегистрированные механизмы завершения аргументов типа Custom.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Clear-NativeArgumentCompleters</command:name>
+      <command:verb>Clear</command:verb>
+      <command:noun>NativeArgumentCompleters</command:noun>
+      <maml:description>
+        <maml:para>Команда удаляет все зарегистрированные механизмы завершения аргументов типа Native.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Команда удаляет все механизмы завершения аргументов типа Native, зарегистрированные в текущей сессии 
+при помощи команды Register-ArgumentCompleter.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Clear-NativeArgumentCompleters</maml:name>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters />
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Пример 1: Удаление всех зарегистрированных механизмов завершения аргументов типа Native</maml:title>
+        <dev:code>Clear-NativeArgumentCompleters</dev:code>
+        <dev:remarks>
+          <maml:para>Команда удаляет все зарегистрированные механизмы завершения аргументов типа Native.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-CustomArgumentCompleter</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>CustomArgumentCompleter</command:noun>
+      <maml:description>
+        <maml:para>Команда получает механизмы завершения аргументов типа Custom.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Команда получает механизмы завершения аргументов типа Custom, зарегистрированные в текущей сессии 
+при помощи команды Register-ArgumentCompleter.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-CustomArgumentCompleter</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="0" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:Description>
+            <maml:para>Имя механизма завершения аргументов типа Custom.</maml:para>
+            <maml:para>В случае, если имя не указано, команда получает все зарегистрированные механизмы завершения типа Custom.</maml:para>
+            <maml:para>Формат имени механизма завершения аргументов типа Custom следующий - "ИмяКоманды:ИмяПараметра".</maml:para>
+            <maml:para>Если при регистрации имя команды указано не было, имя механизма завершения будет соответствовать имени параметра без двоеточия.</maml:para>
+            <maml:para>Параметр поддерживает использование символов подстановки и завершение значений при нажатии клавиши Tab.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>ExpandScriptBlocks</maml:name>
+          <maml:Description>
+            <maml:para>Параметр указывает, что блоки сценария механизмов завершения аргументов при выводе должны быть развернуты.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="0" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:Description>
+          <maml:para>Имя механизма завершения аргументов типа Custom.</maml:para>
+          <maml:para>В случае, если имя не указано, команда получает все зарегистрированные механизмы завершения типа Custom.</maml:para>
+          <maml:para>Формат имени механизма завершения аргументов типа Custom следующий - "ИмяКоманды:ИмяПараметра".</maml:para>
+          <maml:para>Если при регистрации имя команды указано не было, имя механизма завершения будет соответствовать имени параметра без двоеточия.</maml:para>
+          <maml:para>Параметр поддерживает использование символов подстановки и завершение значений при нажатии клавиши Tab.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>ExpandScriptBlocks</maml:name>
+        <maml:Description>
+          <maml:para>Параметр указывает, что блоки сценария механизмов завершения аргументов при выводе должны быть развернуты.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Пример 1: Получение всех механизмов завершения аргументов типа Custom</maml:title>
+        <dev:code>Get-CustomArgumentCompleter
+
+CommandName   ParameterName ScriptBlock
+-----------   ------------- -----------
+Get-Something Name          ...
+Do-Something  Action        ...
+              SomeParameter ...</dev:code>
+        <dev:remarks>
+          <maml:para>Команда получает все механизмы завершения аргументов типа Custom, зарегистрированные в текущей сессии.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Пример 2: Получение указанных механизмов завершения аргументов типа Custom</maml:title>
+        <dev:code>Get-CustomArgumentCompleter -Name Get-Something:Name
+
+CommandName   ParameterName ScriptBlock
+-----------   ------------- -----------
+Get-Something Name          ...</dev:code>
+        <dev:remarks>
+          <maml:para>Команда получает указанный механизм завершения аргументов типа Custom.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Пример 3: Получение механизмов завершения аргументов типа Custom и отображение их блоков сценария в развернутом виде</maml:title>
+        <dev:code>Get-CustomArgumentCompleter -Name Get-Something:Name -ExpandScriptBlocks
+
+CommandName   ParameterName ScriptBlock
+-----------   ------------- -----------
+Get-Something Name
+                            $names = 'NameOne', 'NameTwo', 'NameThree'
+
+                            foreach ($name in $names)
+                            {
+                                if ($name -like "$wordToComplete*")
+                                {
+                                    [System.Management.Automation.CompletionResult]::new($name)
+                                }
+                            }</dev:code>
+        <dev:remarks>
+          <maml:para>Команда получает указанный механизм завершения аргументов типа Custom, отображая его блок сценария в развернутом виде.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-CustomArgumentCompleterScriptBlock</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>CustomArgumentCompleterScriptBlock</command:noun>
+      <maml:description>
+        <maml:para>Команда получает блок сценария механизма завершения аргументов типа Custom.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Команда получает блок сценария указанного механизма завершения аргументов типа Custom, 
+зарегистрированного в текущей сессии при помощи команды Register-ArgumentCompleter.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-CustomArgumentCompleterScriptBlock</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:Description>
+            <maml:para>Имя механизма завершения аргументов типа Custom.</maml:para>
+            <maml:para>Формат имени механизма завершения аргументов типа Custom следующий - "ИмяКоманды:ИмяПараметра".</maml:para>
+            <maml:para>Если при регистрации имя команды указано не было, имя механизма завершения 
+будет соответствовать имени параметра без двоеточия.</maml:para>
+            <maml:para>Параметр поддерживает завершение значений при нажатии клавиши Tab.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:Description>
+          <maml:para>Имя механизма завершения аргументов типа Custom.</maml:para>
+          <maml:para>Формат имени механизма завершения аргументов типа Custom следующий - "ИмяКоманды:ИмяПараметра".</maml:para>
+          <maml:para>Если при регистрации имя команды указано не было, имя механизма завершения 
+будет соответствовать имени параметра без двоеточия.</maml:para>
+          <maml:para>Параметр поддерживает завершение значений при нажатии клавиши Tab.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Пример 1: Получение блока сценария указанного механизма завершения аргументов типа Custom</maml:title>
+        <dev:code>Get-CustomArgumentCompleterScriptBlock -Name Get-Something:Name
+
+$names = 'NameOne', 'NameTwo', 'NameThree'
+
+foreach ($name in $names)
+{
+    if ($name -like "$wordToComplete*")
+    {
+        [System.Management.Automation.CompletionResult]::new($name)
+    }
+}</dev:code>
+        <dev:remarks>
+          <maml:para>Команда получает блок сценария указанного механизма завершения аргументов типа Custom.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Пример 2: Получение блока сценария механизма завершения аргументов типа Custom, переданного через конвейер</maml:title>
+        <dev:code>Get-CustomArgumentCompleter -Name Do-Something:Action | Get-CustomArgumentCompleterScriptBlock
+
+$actions = 'ActionOne', 'ActionTwo'
+
+foreach ($action in $actions)
+{
+    if ($action -like "$wordToComplete*")
+    {
+        [System.Management.Automation.CompletionResult]::new($action)
+    }
+}</dev:code>
+        <dev:remarks>
+          <maml:para>Команда получает блок сценария переданного по конвейеру механизма завершения аргументов типа Custom.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-NativeArgumentCompleter</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>NativeArgumentCompleter</command:noun>
+      <maml:description>
+        <maml:para>Команда получает механизмы завершения аргументов типа Native.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Команда получает механизмы завершения аргументов типа Native, зарегистрированные в текущей сессии 
+при помощи команды Register-ArgumentCompleter.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-NativeArgumentCompleter</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="0" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:Description>
+            <maml:para>Имя механизма завершения аргументов типа Native.</maml:para>
+            <maml:para>В случае, если имя не указано, команда получает все зарегистрированные механизмы завершения типа Native.</maml:para>
+            <maml:para>Имя механизма завершения аргументов типа Native соответствует имени команды.</maml:para>
+            <maml:para>Параметр поддерживает использование символов подстановки и завершение значений при нажатии клавиши Tab.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>ExpandScriptBlocks</maml:name>
+          <maml:Description>
+            <maml:para>Параметр указывает, что блоки сценария механизмов завершения аргументов при выводе должны быть развернуты.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="0" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:Description>
+          <maml:para>Имя механизма завершения аргументов типа Native.</maml:para>
+          <maml:para>В случае, если имя не указано, команда получает все зарегистрированные механизмы завершения типа Native.</maml:para>
+          <maml:para>Имя механизма завершения аргументов типа Native соответствует имени команды.</maml:para>
+          <maml:para>Параметр поддерживает использование символов подстановки и завершение значений при нажатии клавиши Tab.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>ExpandScriptBlocks</maml:name>
+        <maml:Description>
+          <maml:para>Параметр указывает, что блоки сценария механизмов завершения аргументов при выводе должны быть развернуты.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Пример 1: Получение всех механизмов завершения аргументов типа Native</maml:title>
+        <dev:code>Get-NativeArgumentCompleter
+
+CommandName    ScriptBlock
+-----------    -----------
+somecommand    ...
+anothercommand ...</dev:code>
+        <dev:remarks>
+          <maml:para>Команда получает все механизмы завершения аргументов типа Native, зарегистрированные в текущей сессии.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Пример 2: Получение указанных механизмов завершения аргументов типа Native</maml:title>
+        <dev:code>Get-NativeArgumentCompleter -Name somecommand
+
+CommandName ScriptBlock
+----------- -----------
+somecommand ...</dev:code>
+        <dev:remarks>
+          <maml:para>Команда получает указанный механизм завершения аргументов типа Native.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Пример 3: Получение механизмов завершения аргументов типа Native и отображение их блоков сценария в развернутом виде</maml:title>
+        <dev:code>Get-NativeArgumentCompleter -Name somecommand -ExpandScriptBlocks
+
+CommandName ScriptBlock
+----------- -----------
+somecommand
+            $arguments = 'ArgumentOne', 'ArgumentTwo', 'ArgumentThree'
+
+            foreach ($argument in $arguments)
+            {
+                if ($argument -like "$wordToComplete*")
+                {
+                    [System.Management.Automation.CompletionResult]::new($argument)
+                }
+            }</dev:code>
+        <dev:remarks>
+          <maml:para>Команда получает указанный механизм завершения аргументов типа Native, отображая его блок сценария в развернутом виде.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-NativeArgumentCompleterScriptBlock</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>NativeArgumentCompleterScriptBlock</command:noun>
+      <maml:description>
+        <maml:para>Команда получает блок сценария механизма завершения аргументов типа Native.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Команда получает блок сценария указанного механизма завершения аргументов типа Native, 
+зарегистрированного в текущей сессии при помощи команды Register-ArgumentCompleter.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-NativeArgumentCompleterScriptBlock</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:Description>
+            <maml:para>Имя механизма завершения аргументов типа Native.</maml:para>
+            <maml:para>Имя механизма завершения аргументов типа Native соответствует имени команды.</maml:para>
+            <maml:para>Параметр поддерживает завершение значений при нажатии клавиши Tab.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:Description>
+          <maml:para>Имя механизма завершения аргументов типа Native.</maml:para>
+          <maml:para>Имя механизма завершения аргументов типа Native соответствует имени команды.</maml:para>
+          <maml:para>Параметр поддерживает завершение значений при нажатии клавиши Tab.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Пример 1: Получение блока сценария указанного механизма завершения аргументов типа Native</maml:title>
+        <dev:code>Get-NativeArgumentCompleterScriptBlock -Name somecommand
+
+$arguments = 'ArgumentOne', 'ArgumentTwo', 'ArgumentThree'
+
+foreach ($argument in $arguments)
+{
+    if ($argument -like "$wordToComplete*")
+    {
+        [System.Management.Automation.CompletionResult]::new($argument)
+    }
+}</dev:code>
+        <dev:remarks>
+          <maml:para>Команда получает блок сценария указанного механизма завершения аргументов типа Native.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Пример 2: Получение блока сценария механизма завершения аргументов типа Native, переданного через конвейер</maml:title>
+        <dev:code>Get-NativeArgumentCompleter -Name anothercommand | Get-NativeArgumentCompleterScriptBlock
+
+$arguments = 'ArgumentOne', 'ArgumentTwo'
+
+foreach ($argument in $arguments)
+{
+    if ($argument -like "$wordToComplete*")
+    {
+        [System.Management.Automation.CompletionResult]::new($argument)
+    }
+}</dev:code>
+        <dev:remarks>
+          <maml:para>Команда получает блок сценария переданного по конвейеру механизма завершения аргументов типа Native.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Remove-CustomArgumentCompleter</command:name>
+      <command:verb>Remove</command:verb>
+      <command:noun>CustomArgumentCompleter</command:noun>
+      <maml:description>
+        <maml:para>Команда удаляет указанные механизмы завершения аргументов типа Custom.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Команда удаляет указанные механизмы завершения аргументов типа Custom, зарегистрированные в текущей сессии 
+при помощи команды Register-ArgumentCompleter.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-CustomArgumentCompleter</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:Description>
+            <maml:para>Имя механизма завершения аргументов типа Custom.</maml:para>
+            <maml:para>Формат имени механизма завершения аргументов типа Custom следующий - "ИмяКоманды:ИмяПараметра".</maml:para>
+            <maml:para>Если при регистрации имя команды указано не было, имя механизма завершения будет соответствовать имени параметра без двоеточия.</maml:para>
+            <maml:para>Параметр поддерживает завершение значений при нажатии клавиши Tab.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:Description>
+          <maml:para>Имя механизма завершения аргументов типа Custom.</maml:para>
+          <maml:para>Формат имени механизма завершения аргументов типа Custom следующий - "ИмяКоманды:ИмяПараметра".</maml:para>
+          <maml:para>Если при регистрации имя команды указано не было, имя механизма завершения будет соответствовать имени параметра без двоеточия.</maml:para>
+          <maml:para>Параметр поддерживает завершение значений при нажатии клавиши Tab.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Пример 1: Удаление указанного механизма завершения аргументов типа Custom</maml:title>
+        <dev:code>Remove-CustomArgumentCompleter -Name Get-Something:Name</dev:code>
+        <dev:remarks>
+          <maml:para>Команда удаляет указанный механизм завершения аргументов типа Custom.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Пример 2: Удаление механизма завершения аргументов типа Custom, переданного через конвейер</maml:title>
+        <dev:code>Get-CustomArgumentCompleter -Name Do-Something:Action | Remove-CustomArgumentCompleter</dev:code>
+        <dev:remarks>
+          <maml:para>Команда удаляет переданный по конвейеру механизм завершения аргументов типа Custom.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Remove-NativeArgumentCompleter</command:name>
+      <command:verb>Remove</command:verb>
+      <command:noun>NativeArgumentCompleter</command:noun>
+      <maml:description>
+        <maml:para>Команда удаляет указанные механизмы завершения аргументов типа Native.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>Команда удаляет указанные механизмы завершения аргументов типа Native, зарегистрированные в текущей сессии 
+при помощи команды Register-ArgumentCompleter.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-NativeArgumentCompleter</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:Description>
+            <maml:para>Имя механизма завершения аргументов типа Native.</maml:para>
+            <maml:para>Имя механизма завершения аргументов типа Native соответствует имени команды.</maml:para>
+            <maml:para>Параметр поддерживает завершение значений при нажатии клавиши Tab.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:Description>
+          <maml:para>Имя механизма завершения аргументов типа Native.</maml:para>
+          <maml:para>Имя механизма завершения аргументов типа Native соответствует имени команды.</maml:para>
+          <maml:para>Параметр поддерживает завершение значений при нажатии клавиши Tab.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Пример 1: Удаление указанного механизма завершения аргументов типа Native</maml:title>
+        <dev:code>Remove-NativeArgumentCompleter -Name somecommand</dev:code>
+        <dev:remarks>
+          <maml:para>Команда удаляет указанный механизм завершения аргументов типа Native.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Пример 2: Удаление механизма завершения аргументов типа Native, переданного через конвейер</maml:title>
+        <dev:code>Get-NativeArgumentCompleter -Name anothercommand | Remove-NativeArgumentCompleter</dev:code>
+        <dev:remarks>
+          <maml:para>Команда удаляет переданный по конвейеру механизм завершения аргументов типа Native.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+</helpItems>

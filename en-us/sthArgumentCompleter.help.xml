@@ -1,0 +1,852 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml" xmlns="http://msh">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Clear-CustomArgumentCompleters</command:name>
+      <command:verb>Clear</command:verb>
+      <command:noun>CustomArgumentCompleters</command:noun>
+      <maml:description>
+        <maml:para>Clears all of the registered custom argument completers.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The command clears all off the custom argument completers, registered in the current session 
+by the Register-ArgumentCompleter command.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Clear-CustomArgumentCompleters</maml:name>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters />
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Clear all of the registered custom argument completers</maml:title>
+        <dev:code>Clear-CustomArgumentCompleters</dev:code>
+        <dev:remarks>
+          <maml:para>The command clears all of the registered custom argument completers.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Clear-NativeArgumentCompleters</command:name>
+      <command:verb>Clear</command:verb>
+      <command:noun>NativeArgumentCompleters</command:noun>
+      <maml:description>
+        <maml:para>Clears all of the registered native argument completers.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The command clears all off the native argument completers, registered in the current session 
+by the Register-ArgumentCompleter command.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Clear-NativeArgumentCompleters</maml:name>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters />
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Clear all of the registered native argument completers</maml:title>
+        <dev:code>Clear-NativeArgumentCompleters</dev:code>
+        <dev:remarks>
+          <maml:para>The command clears all of the registered native argument completers.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-CustomArgumentCompleter</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>CustomArgumentCompleter</command:noun>
+      <maml:description>
+        <maml:para>Gets registered custom argument completers.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The command gets custom argument completers, registered in the current session 
+by the Register-ArgumentCompleter command.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-CustomArgumentCompleter</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="0" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:Description>
+            <maml:para>Name of the custom argument completer.</maml:para>
+            <maml:para>If not specified, the command returns all registered custom argument completers.</maml:para>
+            <maml:para>The custom argument completer name format is following - "CommandName:ParameterName".</maml:para>
+            <maml:para>If during registration the name of the command was omitted, the name of the registered 
+custom argument completer equals to parameter name without colon.</maml:para>
+            <maml:para>Parameter supports wildcards and Tab completion.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>ExpandScriptBlocks</maml:name>
+          <maml:Description>
+            <maml:para>Specfies, that scriptblocks should be expanded in the output.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="0" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:Description>
+          <maml:para>Name of the custom argument completer.</maml:para>
+          <maml:para>If not specified, the command returns all registered custom argument completers.</maml:para>
+          <maml:para>The custom argument completer name format is following - "CommandName:ParameterName".</maml:para>
+          <maml:para>If during registration the name of the command was omitted, the name of the registered 
+custom argument completer equals to parameter name without colon.</maml:para>
+          <maml:para>Parameter supports wildcards and Tab completion.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>ExpandScriptBlocks</maml:name>
+        <maml:Description>
+          <maml:para>Specfies, that scriptblocks should be expanded in the output.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Get all custom argument completers</maml:title>
+        <dev:code>Get-CustomArgumentCompleter
+
+CommandName   ParameterName ScriptBlock
+-----------   ------------- -----------
+Get-Something Name          ...
+Do-Something  Action        ...
+              SomeParameter ...</dev:code>
+        <dev:remarks>
+          <maml:para>The command gets all custom argument completers registered in the current session.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Get specified custom argument completers</maml:title>
+        <dev:code>Get-CustomArgumentCompleter -Name Get-Something:Name
+
+CommandName   ParameterName ScriptBlock
+-----------   ------------- -----------
+Get-Something Name          ...</dev:code>
+        <dev:remarks>
+          <maml:para>The command gets specified custom argument completer.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Example 3: Get custom argument completers and expand scriptblocks</maml:title>
+        <dev:code>Get-CustomArgumentCompleter -Name Get-Something:Name -ExpandScriptBlocks
+
+CommandName   ParameterName ScriptBlock
+-----------   ------------- -----------
+Get-Something Name
+                            $names = 'NameOne', 'NameTwo', 'NameThree'
+
+                            foreach ($name in $names)
+                            {
+                                if ($name -like "$wordToComplete*")
+                                {
+                                    [System.Management.Automation.CompletionResult]::new($name)
+                                }
+                            }</dev:code>
+        <dev:remarks>
+          <maml:para>The command gets specified custom argument completer and expands its scriptblock.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-CustomArgumentCompleterScriptBlock</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>CustomArgumentCompleterScriptBlock</command:noun>
+      <maml:description>
+        <maml:para>Gets scriptblock of the registered custom argument completer.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The command gets scriptblock of the specified custom argument completer, 
+registered in the current session by the Register-ArgumentCompleter command.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-CustomArgumentCompleterScriptBlock</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:Description>
+            <maml:para>Name of the custom argument completer.</maml:para>
+            <maml:para>The custom argument completer name format is following - "CommandName:ParameterName".</maml:para>
+            <maml:para>If during registration the name of the command was omitted, the name of the registered 
+custom argument completer equals to parameter name without colon.</maml:para>
+            <maml:para>Parameter supports Tab completion.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:Description>
+          <maml:para>Name of the custom argument completer.</maml:para>
+          <maml:para>The custom argument completer name format is following - "CommandName:ParameterName".</maml:para>
+          <maml:para>If during registration the name of the command was omitted, the name of the registered 
+custom argument completer equals to parameter name without colon.</maml:para>
+          <maml:para>Parameter supports Tab completion.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Get scriptblock of the specified custom argument completer</maml:title>
+        <dev:code>Get-CustomArgumentCompleterScriptBlock -Name Get-Something:Name
+
+$names = 'NameOne', 'NameTwo', 'NameThree'
+
+foreach ($name in $names)
+{
+    if ($name -like "$wordToComplete*")
+    {
+        [System.Management.Automation.CompletionResult]::new($name)
+    }
+}</dev:code>
+        <dev:remarks>
+          <maml:para>The command gets scriptblock of the specified custom argument completer.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Get scriptblock of custom argument completer using the pipeline</maml:title>
+        <dev:code>Get-CustomArgumentCompleter -Name Do-Something:Action | Get-CustomArgumentCompleterScriptBlock
+
+$actions = 'ActionOne', 'ActionTwo'
+
+foreach ($action in $actions)
+{
+    if ($action -like "$wordToComplete*")
+    {
+        [System.Management.Automation.CompletionResult]::new($action)
+    }
+}</dev:code>
+        <dev:remarks>
+          <maml:para>The command gets scriptblock of the custom argument completer sent through the pipeline.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-NativeArgumentCompleter</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>NativeArgumentCompleter</command:noun>
+      <maml:description>
+        <maml:para>Gets registered native argument completers.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The command gets native argument completers, registered in the current session 
+by the Register-ArgumentCompleter command.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-NativeArgumentCompleter</maml:name>
+        <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="0" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:Description>
+            <maml:para>Name of the native argument completer.</maml:para>
+            <maml:para>If not specified, the command returns all registered native argument completers.</maml:para>
+            <maml:para>The name of the native argument completer equals to the command name.</maml:para>
+            <maml:para>Parameter supports wildcards and Tab completion.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>ExpandScriptBlocks</maml:name>
+          <maml:Description>
+            <maml:para>Specfies, that scriptblocks should be expanded in the output.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="true" pipelineInput="False" position="0" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:Description>
+          <maml:para>Name of the native argument completer.</maml:para>
+          <maml:para>If not specified, the command returns all registered native argument completers.</maml:para>
+          <maml:para>The name of the native argument completer equals to the command name.</maml:para>
+          <maml:para>Parameter supports wildcards and Tab completion.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>ExpandScriptBlocks</maml:name>
+        <maml:Description>
+          <maml:para>Specfies, that scriptblocks should be expanded in the output.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Get all native argument completers</maml:title>
+        <dev:code>Get-NativeArgumentCompleter
+
+CommandName    ScriptBlock
+-----------    -----------
+somecommand    ...
+anothercommand ...</dev:code>
+        <dev:remarks>
+          <maml:para>The command gets all native argument completers registered in the current session.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Get specified native argument completers</maml:title>
+        <dev:code>Get-NativeArgumentCompleter -Name somecommand
+
+CommandName ScriptBlock
+----------- -----------
+somecommand ...</dev:code>
+        <dev:remarks>
+          <maml:para>The command gets specified native argument completer.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Example 3: Get native argument completers and expand scriptblocks</maml:title>
+        <dev:code>Get-NativeArgumentCompleter -Name somecommand -ExpandScriptBlocks
+
+CommandName ScriptBlock
+----------- -----------
+somecommand
+            $arguments = 'ArgumentOne', 'ArgumentTwo', 'ArgumentThree'
+
+            foreach ($argument in $arguments)
+            {
+                if ($argument -like "$wordToComplete*")
+                {
+                    [System.Management.Automation.CompletionResult]::new($argument)
+                }
+            }</dev:code>
+        <dev:remarks>
+          <maml:para>The command gets specified native argument completer and expands its scriptblock.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-NativeArgumentCompleterScriptBlock</command:name>
+      <command:verb>Get</command:verb>
+      <command:noun>NativeArgumentCompleterScriptBlock</command:noun>
+      <maml:description>
+        <maml:para>Gets scriptblock of the registered native argument completer.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The command gets scriptblock of the specified native argument completer, 
+registered in the current session by the Register-ArgumentCompleter command.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-NativeArgumentCompleterScriptBlock</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:Description>
+            <maml:para>Name of the native argument completer.</maml:para>
+            <maml:para>The name of the native argument completer equals to the command name.</maml:para>
+            <maml:para>Parameter supports Tab completion.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:Description>
+          <maml:para>Name of the native argument completer.</maml:para>
+          <maml:para>The name of the native argument completer equals to the command name.</maml:para>
+          <maml:para>Parameter supports Tab completion.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Get scriptblock of the specified native argument completer</maml:title>
+        <dev:code>Get-NativeArgumentCompleterScriptBlock -Name somecommand
+
+$arguments = 'ArgumentOne', 'ArgumentTwo', 'ArgumentThree'
+
+foreach ($argument in $arguments)
+{
+    if ($argument -like "$wordToComplete*")
+    {
+        [System.Management.Automation.CompletionResult]::new($argument)
+    }
+}</dev:code>
+        <dev:remarks>
+          <maml:para>The command gets scriptblock of the specified native argument completer.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Get scriptblock of native argument completer using the pipeline</maml:title>
+        <dev:code>Get-NativeArgumentCompleter -Name anothercommand | Get-NativeArgumentCompleterScriptBlock
+
+$arguments = 'ArgumentOne', 'ArgumentTwo'
+
+foreach ($argument in $arguments)
+{
+    if ($argument -like "$wordToComplete*")
+    {
+        [System.Management.Automation.CompletionResult]::new($argument)
+    }
+}</dev:code>
+        <dev:remarks>
+          <maml:para>The command gets scriptblock of the native argument completer sent through the pipeline.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Remove-CustomArgumentCompleter</command:name>
+      <command:verb>Remove</command:verb>
+      <command:noun>CustomArgumentCompleter</command:noun>
+      <maml:description>
+        <maml:para>Removes specified registered custom argument completers.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The command removes specified custom argument completers, registered in the current session 
+by the Register-ArgumentCompleter command.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-CustomArgumentCompleter</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:Description>
+            <maml:para>Name of the custom argument completer.</maml:para>
+            <maml:para>The custom argument completer name format is following - "CommandName:ParameterName".</maml:para>
+            <maml:para>If during registration the name of the command was omitted, the name of the registered 
+custom argument completer equals to parameter name without colon.</maml:para>
+            <maml:para>Parameter supports Tab completion.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:Description>
+          <maml:para>Name of the custom argument completer.</maml:para>
+          <maml:para>The custom argument completer name format is following - "CommandName:ParameterName".</maml:para>
+          <maml:para>If during registration the name of the command was omitted, the name of the registered 
+custom argument completer equals to parameter name without colon.</maml:para>
+          <maml:para>Parameter supports Tab completion.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Remove specified custom argument completer</maml:title>
+        <dev:code>Remove-CustomArgumentCompleter -Name Get-Something:Name</dev:code>
+        <dev:remarks>
+          <maml:para>The command removes specified custom argument completer.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Remove custom argument completer using the pipeline</maml:title>
+        <dev:code>Get-CustomArgumentCompleter -Name Do-Something:Action | Remove-CustomArgumentCompleter</dev:code>
+        <dev:remarks>
+          <maml:para>The command removes custom argument completer sent through the pipeline.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Remove-NativeArgumentCompleter</command:name>
+      <command:verb>Remove</command:verb>
+      <command:noun>NativeArgumentCompleter</command:noun>
+      <maml:description>
+        <maml:para>Removes specified registered native argument completers.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The command removes specified native argument completers, registered in the current session 
+by the Register-ArgumentCompleter command.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-NativeArgumentCompleter</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+          <maml:name>Name</maml:name>
+          <maml:Description>
+            <maml:para>Name of the native argument completer.</maml:para>
+            <maml:para>The name of the native argument completer equals to the command name.</maml:para>
+            <maml:para>Parameter supports Tab completion.</maml:para>
+          </maml:Description>
+          <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+          <dev:type>
+            <maml:name>String[]</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName)" position="0" aliases="none">
+        <maml:name>Name</maml:name>
+        <maml:Description>
+          <maml:para>Name of the native argument completer.</maml:para>
+          <maml:para>The name of the native argument completer equals to the command name.</maml:para>
+          <maml:para>Parameter supports Tab completion.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>None</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.Object</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para></maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>Example 1: Remove specified native argument completer</maml:title>
+        <dev:code>Remove-NativeArgumentCompleter -Name somecommand</dev:code>
+        <dev:remarks>
+          <maml:para>The command removes specified native argument completer.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>Example 2: Remove native argument completer using the pipeline</maml:title>
+        <dev:code>Get-NativeArgumentCompleter -Name anothercommand | Remove-NativeArgumentCompleter</dev:code>
+        <dev:remarks>
+          <maml:para>The command removes native argument completer sent through the pipeline.</maml:para>
+          <maml:para/>
+          <maml:para/>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks />
+  </command:command>
+</helpItems>
