@@ -1,7 +1,7 @@
 # sthArgumentCompleter
 [![Build Status](https://dev.azure.com/sethv/seth/_apis/build/status/sthArgumentCompleter?branchName=master)](https://dev.azure.com/sethv/seth/_build/latest?definitionId=8&branchName=master)
 
-**sthArgumentCompleter** - is a module for working with argument completers registered by Register-ArgumentCompleter cmdlet.
+**sthArgumentCompleter** - is a module for managing argument completers registered by Register-ArgumentCompleter cmdlet.
 
 It contains following functions:
 
