@@ -3,10 +3,11 @@ Import-Module "$PSScriptRoot\..\sthArgumentCompleter.psd1"
 
 function inCreateTestEnvironment
 {
+    Register-ArgumentCompleter -CommandName CommandOne -ParameterName Parameter -ScriptBlock { 'Testing-0.' }
+
     Register-ArgumentCompleter -CommandName CommandOne -ParameterName ParameterOne -ScriptBlock { 'Testing-11.' }
     Register-ArgumentCompleter -CommandName CommandOne -ParameterName ParameterTwo -ScriptBlock { 'Testing-12.' }
     Register-ArgumentCompleter -CommandName CommandTwo -ParameterName ParameterOne -ScriptBlock { 'Testing-21.' }
-    Register-ArgumentCompleter -CommandName CommandTwo -ParameterName ParameterTwo -ScriptBlock { 'Testing-22.' }
 
     Register-ArgumentCompleter -ParameterName ParameterThree -ScriptBlock { 'Testing-3.' }
 
@@ -40,7 +41,7 @@ Describe "sthArgumentCompleter" {
         }
 
         It "Should get Custom Argument Completers by Name" {
-            $CustomArgumentCompleters = Get-CustomArgumentCompleter -Name CommandOne:ParameterOne, CommandTwo:ParameterTwo, ParameterThree
+            $CustomArgumentCompleters = Get-CustomArgumentCompleter -Name CommandOne:ParameterOne, CommandTwo:ParameterOne, ParameterThree
             $CustomArgumentCompleters | Should -HaveCount 3
         }
 
@@ -190,9 +191,9 @@ Describe "ArgumentCompleterCompleters" {
             $result.CompletionMatches.CompletionText | Should -BeExactly 'ParameterThree'
         }
 
-        It "Should complete second Custom Argument Completer Name" {
+        It "Should complete remaining Custom Argument Completer Name" {
 
-            $command = 'Get-CustomArgumentCompleter -Name CommandOne:ParameterOne, CommandOne'
+            $command = 'Get-CustomArgumentCompleter -Name CommandOne:Parameter, CommandOne:ParameterOne, CommandOne'
             $result = TabExpansion2 -inputScript $command -cursorColumn $command.Length
             $result.CompletionMatches.CompletionText | Should -BeExactly 'CommandOne:ParameterTwo'
         }
@@ -209,6 +210,26 @@ Describe "ArgumentCompleterCompleters" {
             $command = 'Get-CustomArgumentCompleter -Name CommandOne:ParameterOne, '
             $result = TabExpansion2 -inputScript $command -cursorColumn $command.Length
             $result.CompletionMatches | Should -HaveCount 4
+        }
+
+        It "Should not suggest already specified values, `$wordToComplete should be suggested" {
+            $command = 'Get-CustomArgumentCompleter -Name CommandOne:ParameterOne, CommandOne:Parameter'
+            $result = TabExpansion2 -inputScript $command -cursorColumn $command.Length
+            $result.CompletionMatches | Should -HaveCount 2
+            $result.CompletionMatches.CompletionText | Should -Contain 'CommandOne:Parameter'
+            $result.CompletionMatches.CompletionText | Should -Contain 'CommandOne:ParameterTwo'
+        }
+
+        It "Should not suggest already specified values, `$wordToComplete should not be suggested" {
+            $command = 'Get-CustomArgumentCompleter -Name CommandOne:Parameter, CommandOne:ParameterOne, CommandOne:Parameter'
+            $result = TabExpansion2 -inputScript $command -cursorColumn $command.Length
+            $result.CompletionMatches.CompletionText | Should -BeExactly 'CommandOne:ParameterTwo'
+        }
+
+        It "Should suggest nothing" {
+            $command = 'Get-CustomArgumentCompleter -Name CommandOne:Parameter, CommandOne:ParameterOne, CommandOne:ParameterTwo, CommandTwo:ParameterOne, ParameterThree, '
+            $result = TabExpansion2 -inputScript $command -cursorColumn $command.Length
+            $result.CompletionMatches | Should -BeNullOrEmpty
         }
     }
 
