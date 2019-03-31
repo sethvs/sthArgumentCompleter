@@ -1,0 +1,63 @@
+parameters:
+  os: ''
+
+steps:
+- task: PowerShell@2
+  name: PowerShellCoreVersion
+  displayName: 'PowerShell Core: Version'
+  inputs:
+    targetType: 'inline'
+    script: $PSVersionTable
+    pwsh: true
+  condition: succeededOrFailed()
+
+- ${{ if in(parameters.os, 'Windows', 'macOS')}}:
+  - task: PowerShell@2
+    name: PowerShellCoreInstallPester
+    displayName: 'PowerShell Core: Install Pester'
+    inputs:
+      targetType: 'inline'
+      script: |
+        Install-Module -Name Pester -MinimumVersion 4.7.3 -Repository PSGallery -Force
+      pwsh: true
+    condition: succeededOrFailed()
+
+- ${{ if eq(parameters.os, 'Linux')}}:
+  - task: PowerShell@2
+    name: PowerShellCoreInstallPesterForCurrentUser
+    displayName: 'PowerShell Core: Install Pester for Current User'
+    inputs:
+      targetType: 'inline'
+      script: |
+        Install-Module -Name Pester -MinimumVersion 4.7.3 -Repository PSGallery -Force -Scope CurrentUser
+      pwsh: true
+    condition: succeededOrFailed()
+
+- task: PowerShell@2
+  name: PowerShellCoreInvokePester
+  displayName: 'PowerShell Core: Test with Pester'
+  inputs:
+    targetType: 'inline'
+    script: |
+      Invoke-Pester .\Tests\sthArgumentCompleter.tests.ps1 -OutputFile .\testResultsCore.xml -OutputFormat NUnitXml -CodeCoverage .\sthArgumentCompleterFunctions.ps1, .\sthArgumentCompleterCompleters.ps1 -CodeCoverageOutputFile .\codeCoverageCore.xml -CodeCoverageOutputFileFormat JaCoCo
+    pwsh: true
+  condition: succeededOrFailed()
+
+- task: PublishTestResults@2
+  name: PowerShellCorePublishTestResults
+  displayName: 'PowerShell Core: Publish Test Results'
+  inputs:
+    testRunner: 'NUnit'
+    testResultsFiles: 'testResultsCore.xml' 
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+    testRunTitle: '${{ parameters.os }}: PowerShell Core'
+    failTaskOnFailedTests: true
+  condition: succeededOrFailed()
+
+- task: PublishCodeCoverageResults@1
+  name: PowerShellCorePublishCodeCoverage
+  displayName: 'PowerShell Core: Publish Code Coverage'
+  inputs:
+    codeCoverageTool: 'JaCoCo'
+    summaryFileLocation: $(System.DefaultWorkingDirectory)/codeCoverageCore.xml
+  condition: succeededOrFailed()
