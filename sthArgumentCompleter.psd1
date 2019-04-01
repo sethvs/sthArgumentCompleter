@@ -12,7 +12,7 @@
 RootModule = 'sthArgumentCompleter.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1'
+ModuleVersion = '1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Desktop','Core'
@@ -30,7 +30,7 @@ CompanyName = 'Unknown'
 Copyright = '(c) Sergey Vasin. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Module for working with argument completers registered by Register-ArgumentCompleter cmdlet.'
+Description = 'Module for managing argument completers registered by Register-ArgumentCompleter cmdlet'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'
@@ -95,7 +95,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        # Tags = @()
+        Tags = @('PSEdition_Desktop', 'PSEdition_Core', 'Windows', 'Linux', 'MacOS')
 
         # A URL to the license for this module.
         # LicenseUri = ''
