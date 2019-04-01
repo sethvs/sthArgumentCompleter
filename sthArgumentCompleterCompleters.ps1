@@ -21,10 +21,17 @@ class sthArgumentCompleter : System.Management.Automation.IArgumentCompleter
         $values = @()
         [System.Collections.Generic.List[String]]$valuesToExclude = $null
 
-        $commandParameterAst = $commandAst.Find({$args[0].GetType().Name -eq 'CommandParameterAst' -and $args[0].ParameterName -eq $parameterName}, $false)
-        $i = $commandAst.CommandElements.IndexOf($commandParameterAst)
+        if ($commandParameterAst = $commandAst.Find({$args[0].GetType().Name -eq 'CommandParameterAst' -and $args[0].ParameterName -eq $parameterName}, $false))
+        {
+            $i = $commandAst.CommandElements.IndexOf($commandParameterAst)
+            $parameterValueAst = $commandAst.CommandElements[$i+1]
+        }
+        else
+        {
+            $parameterValueAst = $commandAst.CommandElements[1]
+        }
 
-        if (($parameterValueAst = $commandAst.CommandElements[$i+1]))
+        if ($parameterValueAst)
         {
             if ($parameterValueAst.GetType().Name -eq 'ArrayLiteralAst')
             {
