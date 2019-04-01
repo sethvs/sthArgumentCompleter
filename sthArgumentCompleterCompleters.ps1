@@ -18,34 +18,48 @@ class sthArgumentCompleter : System.Management.Automation.IArgumentCompleter
 
         $argumentCompleters = inGetArgumentCompleter -Type $type
 
-        foreach ($key in $argumentCompleters.Keys)
+        $values = @()
+        [System.Collections.Generic.List[String]]$valuesToExclude = $null
+
+        if ($commandParameterAst = $commandAst.Find({$args[0].GetType().Name -eq 'CommandParameterAst' -and $args[0].ParameterName -eq $parameterName}, $false))
         {
-            if ($wordToComplete)
+            $i = $commandAst.CommandElements.IndexOf($commandParameterAst)
+            $parameterValueAst = $commandAst.CommandElements[$i+1]
+        }
+        else
+        {
+            $parameterValueAst = $commandAst.CommandElements[1]
+        }
+
+        if ($parameterValueAst)
+        {
+            if ($parameterValueAst.GetType().Name -eq 'ArrayLiteralAst')
             {
-                if ($key -like "$wordToComplete*" -and $key -notin ($fakeBoundParameters.$parameterName | Where-Object {$_ -ne $wordToComplete} ))
+                $values = $parameterValueAst.Elements
+            }
+            elseif ($parameterValueAst.GetType().Name -eq 'ErrorExpressionAst')
+            {
+                $values = $parameterValueAst.NestedAst
+            }
+
+            if ($values)
+            {
+                $valuesToExclude = $values |
+                Where-Object { $_.GetType().Name -eq 'StringConstantExpressionAst' } |
+                ForEach-Object { $_.SafeGetValue() }
+
+                if ($wordToComplete)
                 {
-                    $result.Add([System.Management.Automation.CompletionResult]::new($key))
+                    $valuesToExclude.Remove($wordToComplete) | Out-Null
                 }
             }
-            else
-            {
-                $commandParameterAst = $commandAst.Find({$args[0].GetType().Name -eq 'CommandParameterAst' -and $args[0].ParameterName -eq $parameterName}, $false)
-                $i = $commandAst.CommandElements.IndexOf($commandParameterAst)
-                if (($parameterValueAst = $commandAst.CommandElements[$i+1]) -and ($parameterValueAst.GetType().Name -eq 'ErrorExpressionAst'))
-                {
-                    $values = $parameterValueAst.NestedAst | 
-                        Where-Object { $_.GetType().Name -eq 'StringConstantExpressionAst' } |
-                        ForEach-Object { $_.SafeGetValue() }
+        }
 
-                    if ($key -notin $values)
-                    {
-                        $result.Add([System.Management.Automation.CompletionResult]::new($key))
-                    }
-                }
-                else
-                {
-                    $result.Add([System.Management.Automation.CompletionResult]::new($key))
-                }
+        foreach ($key in $argumentCompleters.Keys)
+        {
+            if ($key -like "$wordToComplete*" -and $key -notin $valuesToExclude)
+            {
+                $result.Add([System.Management.Automation.CompletionResult]::new($key))
             }
         }
 
