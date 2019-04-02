@@ -10,7 +10,7 @@ Locale: en-us
 
 ## Description
 
-Module for working with argument completers registered by Register-ArgumentCompleter cmdlet.
+Module for managing argument completers registered by Register-ArgumentCompleter cmdlet.
 
 ## sthArgumentCompleter Cmdlets
 
