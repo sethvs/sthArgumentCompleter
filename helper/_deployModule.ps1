@@ -17,7 +17,7 @@ function Deploy-sthModule
     Copy-Item -Path .\ru-ru -Destination $Path -Exclude *_* -Recurse
 }
 
-$ModuleName = Split-Path -Path $PSScriptRoot -Leaf
+$ModuleName = Split-Path -Path $PSScriptRoot\.. -Leaf
 $ModulePath = 'C:\Program Files\WindowsPowerShell\Modules'
 
 Deploy-sthModule -ModuleName $ModuleName -ModulePath $ModulePath
